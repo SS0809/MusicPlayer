@@ -1,4 +1,4 @@
-  var a=0;
+   var a=0;
 function change()
 {
     //alert("hi");
