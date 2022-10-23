@@ -7,19 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
 </head>
 
 <body>
     <div class="player">
         <div class="internal-player-image"> </div>
-        <div class="internal-timeline">----------------------------------------</div>
+        <div class="internal-timeline">----------------------------------------------</div>
         <div class="internal-name">
             <h3>some music is running</h3>
 
         </div>
         <button class="internal-player-left">
         </button>
-            <button class="internal-player-main"> </button>
+            <button class="internal-player-main" onclick="change();"> 
+            <div class="internal-player-play" id="play"> 
+            </div></button>
                 <button class="internal-player-right"></button>
     </div>
     </div>
