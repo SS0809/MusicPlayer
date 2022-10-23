@@ -8,6 +8,27 @@ body {
     background-color:#222222;
     border-radius:16px;
     }
+.internal-player-image{
+    height:200px;
+    width:200px;
+    position:absolute ;
+    border-radius:8px;
+    right:80px;
+    bottom:400px;
+    background-color:green;
+}
+.internal-timeline{
+    background-color:blue;
+}
+.internal-name{
+    height:20px;
+    width:180px;
+    position:absolute ;
+    border-radius:8px;
+    right:90px;
+    bottom:365px;
+    background-color:#656565;
+}
 .internal-player-main{
     height:70px;
     width:70px;
@@ -34,13 +55,4 @@ body {
     right:60px;
     bottom:290px;
     background-color:#656565;
-}
-.internal-player-image{
-       height:200px;
-    width:200px;
-    position:absolute ;
-    border-radius:8px;
-    right:80px;
-    bottom:400px;
-    background-color:green;
 }
