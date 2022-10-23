@@ -1,58 +1,45 @@
 body {
     background-color:black;
     color:white;
-    padding:25px;
+    padding:10%;
 }
 .player{
-    padding:180px 50px;
+    padding:20px 20px;
+      margin: 1%;
     background-color:#222222;
     border-radius:16px;
     }
 .internal-player-image{
     height:200px;
     width:200px;
-    position:absolute ;
+    margin: 6%;
     border-radius:8px;
-    right:80px;
-    bottom:400px;
     background-color:green;
 }
 .internal-timeline{
-    background-color:blue;
-}
+    margin: 50px;
+ }
 .internal-name{
-    height:20px;
-    width:180px;
-    position:absolute ;
-    border-radius:8px;
-    right:90px;
-    bottom:365px;
-    background-color:#656565;
-}
+    margin-top: 50px;
+ }
 .internal-player-main{
-    height:70px;
-    width:70px;
-    position:absolute ;
     border-radius:8px;
-    right:145px;
-    bottom:290px;
+    height:50px;
+    width:50px;
+    margin-left: 80px;
     background-color:#656565;
 }
 .internal-player-left{
-       height:70px;
-    width:70px;
-    position:absolute ;
     border-radius:8px;
-    right:230px;
-    bottom:290px;
+    height:50px;
+    width:50px;
+    margin: 10px;
     background-color:#656565;
 }
 .internal-player-right{
-       height:70px;
-    width:70px;
-    position:absolute ;
     border-radius:8px;
-    right:60px;
-    bottom:290px;
+    height:50px;
+    width:50px;
+    margin-left: 80px;
     background-color:#656565;
 }
