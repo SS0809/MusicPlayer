@@ -1,0 +1,91 @@
+body {
+
+    background-color:black;
+
+    color:white;
+
+    padding:25px;
+
+}
+
+.player{
+
+    padding:180px 50px;
+
+    background-color:blue;
+
+    border-radius:16px;
+
+    }
+
+.internal-player-main{
+
+    height:70px;
+
+    width:70px;
+
+    position:absolute ;
+
+    border-radius:8px;
+
+    right:145px;
+
+    bottom:290px;
+
+    background-color:green;
+
+}
+
+.internal-player-left{
+
+       height:70px;
+
+    width:70px;
+
+    position:absolute ;
+
+    border-radius:8px;
+
+    right:230px;
+
+    bottom:290px;
+
+    background-color:green;
+
+}
+
+.internal-player-right{
+
+       height:70px;
+
+    width:70px;
+
+    position:absolute ;
+
+    border-radius:8px;
+
+    right:60px;
+
+    bottom:290px;
+
+    background-color:green;
+
+}
+
+.internal-player-image{
+
+       height:200px;
+
+    width:200px;
+
+    position:absolute ;
+
+    border-radius:8px;
+
+    right:80px;
+
+    bottom:400px;
+
+    background-color:green;
+
+}
