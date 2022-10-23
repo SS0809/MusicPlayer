@@ -13,13 +13,14 @@ function change()
    // console.log(a);
 }
 function bgchange(){
- const arr=["red","blue","#1C2A3D","green","pink","yellow","black"];
-   var i=0;
+ const arr=["#4d0606","#4d0622","#4d063e","#40064d","#29064d","#0c064d","#06304d","#064d4b","#064d2c","#0e4d06","#394d06","#4d4206","#4d2506","#4d0606","#340e47"];
+   var i=0,j=14;
   setInterval(function () {
   //document.body.style.backgroundColor = arr[i];
-  document.body.style.background = "linear-gradient(110deg,  black,"+arr[i]+")";
-  i++;
-  if(i==6){bgchange();}
-  }, 1200); 
+  document.body.style.background = "linear-gradient("+i*15+"deg,  "+arr[j]+" ,black,"+arr[i]+")";
+  i++;j--;
+  if(i==14){bgchange ();}
+  }, 800); 
+  
  // console.log(i);
 }
