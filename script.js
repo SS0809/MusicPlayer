@@ -12,3 +12,14 @@ function change()
 }
    // console.log(a);
 }
+function bgchange(){
+ const arr=["red","blue","black","green","pink","yellow","black"];
+   var i=0;
+  setInterval(function () {
+  document.body.style.backgroundColor = arr[i];
+  i++;
+  if(i==6){bgchange();}
+  }, 1200); 
+ // console.log(i);
+  
+}
