@@ -6,7 +6,9 @@
     $database = "music";
     $conn = mysqli_connect($servername,
         $username, $password, $database);
-
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+   $id = $_POST["id"];
+}
     if($conn) {
     //  echo "success";
            //$sql = "INSERT INTO `player`( `timeline`, `username`, `ytcode`) VALUES ('0:00','saurabhss','M7lc1UVf-VE')";
@@ -53,6 +55,7 @@ $timeline =  $row["timeline"];
           playerVars: {
             'playsinline': 1,
             'controls':0,
+            'loop':1
           },
           events: {
             'onReady': onPlayerReady,
