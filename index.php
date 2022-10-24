@@ -55,7 +55,6 @@ $timeline =  $row["timeline"];
           playerVars: {
             'playsinline': 1,
             'controls':0,
-            'loop':1
           },
           events: {
             'onReady': onPlayerReady,
@@ -63,6 +62,8 @@ $timeline =  $row["timeline"];
           }
         });
       }
+                  player.setLoop(true);
+
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
         event.target.playVideo();//play video
@@ -77,6 +78,10 @@ $timeline =  $row["timeline"];
         if (event.data == YT.PlayerState.PLAYING && !done) {
           //setTimeout(stopVideo, 6000);
           done = true;
+        }
+        if(event.data == YT.PlayerState.PAUSED)
+        {
+             alert(player.getCurrentTime());
         }
       }
       function stopVideo() {
