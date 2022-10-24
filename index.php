@@ -80,6 +80,11 @@ $timeline =  $row["timeline"];
             // alert(player.getCurrentTime());
              //alert(player.getDuration());
         }
+        else if(event.data == YT.PlayerState.ENDED)
+        {
+                  location.href = "admin.php";
+
+        }
       }
       function seeek(data){
             player.seekTo(data, true);

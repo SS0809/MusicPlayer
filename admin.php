@@ -92,6 +92,11 @@ $timeline =  $row["timeline"];
              alert(player.getCurrentTime());
 
         }
+        else if(event.data == YT.PlayerState.ENDED)
+        {
+                  location.href = "admin.php";
+
+        }
       }
             function recursionn(){
 
@@ -102,7 +107,6 @@ $timeline =  $row["timeline"];
       function stopVideo() {
         player.stopVideo();
       }
-
 function updateStatus(status_val) {
     $.ajax({
         type: "POST",
