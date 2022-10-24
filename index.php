@@ -14,7 +14,7 @@
     <div id="player" class="internal-player-image"></div>
             <div class="internal-timeline">------------------------------------------</div>
         <div class="internal-name">
-            <h3>some music is running</h3>
+            <h3 class="username" id="username">some music is running</h3>
 
         </div>
         <button class="internal-player-left">
