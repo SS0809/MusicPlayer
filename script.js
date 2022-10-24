@@ -28,7 +28,7 @@ function bgchange(){
 }
 
 
-
+/*
 
 
  // 2. This code loads the IFrame Player API code asynchronously.
@@ -75,4 +75,4 @@ function bgchange(){
       }
       function stopVideo() {
         player.stopVideo();
-      }
+      }*/
