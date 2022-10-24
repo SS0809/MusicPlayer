@@ -26,11 +26,6 @@ function bgchange(){
   
  // console.log(i);
 }
-
-
-/*
-
-
  // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
 
@@ -43,12 +38,12 @@ function bgchange(){
       var player;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
-          height: '350',
-          width: '390',
+          height: '250',
+          width: '230',
           videoId: 'M7lc1UVf-VE',
           playerVars: {
             'playsinline': 1,
-            'autoplay':1
+            'controls':0,
           },
           events: {
             'onReady': onPlayerReady,
@@ -75,4 +70,4 @@ function bgchange(){
       }
       function stopVideo() {
         player.stopVideo();
-      }*/
+      }
