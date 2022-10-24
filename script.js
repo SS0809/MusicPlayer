@@ -5,10 +5,12 @@ function change()
  a++;
  if(a%2!=0){
     document.getElementById('play').className = "internal-player-pause";
+    player.playVideo();
     }
     else
 {
     document.getElementById('play').className = "internal-player-play";
+    player.pauseVideo();
 }
    // console.log(a);
 }
@@ -26,7 +28,7 @@ function bgchange(){
 }
 
 
-/*
+
 
 
  // 2. This code loads the IFrame Player API code asynchronously.
@@ -41,8 +43,8 @@ function bgchange(){
       var player;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
-          height: '0',
-          width: '0',
+          height: '350',
+          width: '390',
           videoId: 'M7lc1UVf-VE',
           playerVars: {
             'playsinline': 1,
@@ -73,4 +75,4 @@ function bgchange(){
       }
       function stopVideo() {
         player.stopVideo();
-      }*/
+      }
