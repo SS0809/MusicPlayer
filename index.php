@@ -1,4 +1,31 @@
-<!DOCTYPE html>
+<?php
+ session_start();
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "music";
+    $conn = mysqli_connect($servername,
+        $username, $password, $database);
+
+    if($conn) {
+    //  echo "success";
+           //$sql = "INSERT INTO `player`( `timeline`, `username`, `ytcode`) VALUES ('0:00','saurabhss','M7lc1UVf-VE')";
+        $sql= "SELECT * FROM player WHERE id = '2';";
+      $result = mysqli_query($conn, $sql); 
+        $num = mysqli_num_rows($result);
+   while($row = mysqli_fetch_assoc($result)) {
+   $name = $row["username"];
+   $id = $row["id"];
+  $ytcode =  $row["ytcode"];
+$timeline =  $row["timeline"];
+
+  }
+    }
+    else {
+        die("Error". mysqli_connect_error());
+}
+?>
+    <!DOCTYPE html>
 <html>
 
 <head>
@@ -7,6 +34,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+        <script>
+// 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '250',
+          width: '230',
+          videoId: '<?php echo $ytcode;?>',
+          playerVars: {
+            'playsinline': 1,
+            'controls':0,
+          },
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();//play video
+        player.seekTo(<?php echo $timeline;?>, true);//seek to a time
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          //setTimeout(stopVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+    </script>
     <script src="script.js"></script>
 </head>
 <body onload="bgchange();">
