@@ -6,7 +6,17 @@
     $database = "music";
     $conn = mysqli_connect($servername,
         $username, $password, $database);
-
+$db = new PDO('mysql:host=localhost;dbname=music', 'root', '');
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['timeline_update'])) {
+        $update = $db->prepare("UPDATE `player` SET `timeline` = ? WHERE `id` = '2' LIMIT 1;");
+        $update->execute([$_POST['status']]);
+        echo json_encode($_POST);
+    }
+}
+ else {
+    //echo json_encode(array());
+}
     if($conn) {
     //  echo "success";
            //$sql = "INSERT INTO `player`( `timeline`, `username`, `ytcode`) VALUES ('0:00','saurabhss','M7lc1UVf-VE')";
@@ -71,35 +81,38 @@ $timeline =  $row["timeline"];
       var done = false;
       function onPlayerStateChange(event) {
         if (event.data == YT.PlayerState.PLAYING && !done) {
-          //setTimeout(stopVideo, 6000);        
+          //setTimeout(stopVideo, 6000);
+          recursionn();
+            updateStatus(player.getCurrentTime()); 
           done = true;
         }
         if(event.data == YT.PlayerState.PAUSED)
-        {    
-            getstatus();
-            // alert(player.getCurrentTime());
-             //alert(player.getDuration());
-        }
-      }
-      function seeek(data){
-            player.seekTo(data, true);
+        {
+                 updateStatus(player.getCurrentTime()); 
+             alert(player.getCurrentTime());
 
-      }
-function getstatus(){
-      $.ajax({    
-        type: "GET",
-        url: "backend.php",             
-        dataType: "html",                  
-        success: function(data){  
-                   console.log("data");  
-         seeek(data);
-        return data ;
         }
-    });
-}
+      }
+            function recursionn(){
+
+                 updateStatus(player.getCurrentTime()); 
+                
+     setTimeout(recursionn, 100);
+      }
       function stopVideo() {
         player.stopVideo();
       }
+
+function updateStatus(status_val) {
+    $.ajax({
+        type: "POST",
+        url: "admin.php",
+        data: {timeline_update: true, status: status_val},
+        success: function (result) {
+        }
+    });
+}
+
     </script>
     <script src="script.js"></script>
 </head>
@@ -119,7 +132,7 @@ function getstatus(){
                 <button class="internal-player-right"></button>
     </div>
     </div>
-    <div class="hide"></div>
+    <div id="updatedAt" class="hide"></div>
 </body>
 
 </html>
