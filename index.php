@@ -63,9 +63,10 @@ $timeline =  $row["timeline"];
         });
       }
                   player.setLoop(true);
-
+           
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
+        setPlaybackRate(small);
         event.target.playVideo();//play video
         player.seekTo(<?php echo $timeline;?>, true);//seek to a time
       }
@@ -82,6 +83,7 @@ $timeline =  $row["timeline"];
         if(event.data == YT.PlayerState.PAUSED)
         {
              alert(player.getCurrentTime());
+             alert(player.getDuration());
         }
       }
       function stopVideo() {
