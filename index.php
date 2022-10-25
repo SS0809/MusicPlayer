@@ -133,7 +133,7 @@ function even()
                 <button class="internal-player-right" id="internal-player-right" onclick="even();">SYNC</button>
     </div>
     </div>
-    likes: <div id="like"></div>
+            likes: <div id="like"></div>
     <div class="hide"></div>
     <script src="script.js"></script>
 </body>
