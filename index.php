@@ -24,7 +24,7 @@ $timeline =  $row["timeline"];
 
 <head>
     <title>music player</title>
-        <h1>LEAF</h1>
+        <h1 class="h11">LEAF</h1>
     <!--<meta http-equiv="refresh" content="100">-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -82,7 +82,7 @@ $timeline =  $row["timeline"];
         }
         else if(event.data == YT.PlayerState.ENDED)
         {
-                  location.href = "admin.php";
+                  location.href = "index.php";
 
         }
       }
@@ -114,25 +114,27 @@ function even()
       function stopVideo() {
         player.stopVideo();
       }
+
     </script>
-    <script src="script.js"></script>
 </head>
 <body onload="bgchange();">
     <div class="player">
     <div id="player" class="internal-player-image"></div>
-            <div class="internal-timeline">------------------------------------------</div>
+           <!-- <div class="internal-timeline">------------------------------------------</div>-->
         <div class="internal-name">
-            <h3 class="username" id="username">you are listenning the music</h3>
+            <h3 class="title" id="title">you are listenning the music</h3>
 
         </div>
-        <button class="internal-player-left">
-        </button>
-            <button class="internal-player-main" onclick="change();"> 
+       <!-- <button class="internal-player-left">
+        </button>-->
+            <button class="internal-player-main" id="internal-player-main" onclick="change();"> 
             <div class="internal-player-play" id="play"> 
             </div></button>
                 <button class="internal-player-right" id="internal-player-right" onclick="even();">SYNC</button>
     </div>
     </div>
+    likes: <div id="like"></div>
     <div class="hide"></div>
+    <script src="script.js"></script>
 </body>
 </html>

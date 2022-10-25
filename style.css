@@ -6,7 +6,7 @@ body {
 .player{
     padding:20px 20px;
       margin: 1%;
-    background-color:#222222;
+    background-color:transparent;
     border-radius:16px;
     }
 .ytplayer{
@@ -46,6 +46,7 @@ body {
     height:50px;
     width:50px;
     margin: 5%;
+    float: left;
     background-color:green;
 }
 .internal-player-left{
@@ -53,6 +54,7 @@ body {
     height:50px;
     width:50px;
     margin: 5%;
+    float: left;
     background-color:#656565;
 }
 .internal-player-right{
@@ -60,6 +62,7 @@ body {
     height:50px;
     width:50px;
     margin:5%;
+    float: right;
     background-color:#656565;
 }
 .hide{

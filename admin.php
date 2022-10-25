@@ -35,12 +35,13 @@ $timeline =  $row["timeline"];
 
 <head>
     <title>music player</title>
-    <h1>ROOT</h1>
+    <h1 class="h11">ROOT</h1>
     <!--<meta http-equiv="refresh" content="100">-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
+    <script type="text/javascript" src="apiv4.js"></script>
         <script>
 // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
@@ -60,6 +61,7 @@ $timeline =  $row["timeline"];
           playerVars: {
             'playsinline': 1,
             'controls':0,
+            suggestedQuality:'small',
           },
           events: {
             'onReady': onPlayerReady,
@@ -124,25 +126,64 @@ function updateStatus(status_val) {
 }
 
     </script>
-    <script src="script.js"></script>
 </head>
 <body onload="bgchange();">
     <div class="player">
     <div id="player" class="internal-player-image"></div>
-            <div class="internal-timeline">------------------------------------------</div>
+            <!--<div class="internal-timeline">------------------------------------------</div>-->
         <div class="internal-name">
-            <h3 class="username" id="username">you are running the music</h3>
+            <h3 class="title" id="title">you are running the music</h3>
 
         </div>
-        <button class="internal-player-left">
-        </button>
+       <!-- <button class="internal-player-left">
+        </button>-->
             <button class="internal-player-main" onclick="change();"> 
             <div class="internal-player-play" id="play"> 
             </div></button>
                 <button class="internal-player-right" id="internal-player-right" onclick="even();">SYNC</button>
     </div>
     </div>
+        likes: <div id="like"></div>
     <div id="updatedAt" class="hide"></div>
+    <script src="script.js"></script>
 </body>
 
 </html>
+<!--
+    <div id="player"></div>
+<script>
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  var player;
+  function onYouTubePlayerAPIReady() {
+    player = new YT.Player('player', {
+      height: '390',
+      width: '640',
+     loadPlaylist:{
+        listType:'playlist',
+        list:['M7lc1UVf-VE','M7lc1UVf-VE'],
+        index:0,
+        suggestedQuality:'small'
+     },
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+  function onPlayerReady(event) {
+           event.target.loadPlaylist(['M7lc1UVf-VE','M7lc1UVf-VE']);
+  }
+  var done = false;
+  function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING && !done) {
+     // setTimeout(stopVideo, 60000);
+      done = true;
+    }
+  }
+  function stopVideo() {
+    player.stopVideo();
+  }
+</script>-->
