@@ -100,7 +100,7 @@ $timeline =  $row["timeline"];
                 if (value%2!=0) {
                  //console.log("hi");
                  document.getElementById('internal-player-right').style.background="green";
-               updateStatus(player.getCurrentTime()+0.46);        
+               updateStatus(player.getCurrentTime()+0.468);        
                  setTimeout(recursionn, 100);
              }
       }
