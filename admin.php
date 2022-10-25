@@ -1,12 +1,10 @@
 <?php
  session_start();
-    $servername = "sql201.epizy.com";
-    $username = "epiz_32860240";
-    $password = "chutiya65";
-    $database = "epiz_32860240_music";
+ include "database.php";
     $conn = mysqli_connect($servername,
         $username, $password, $database);
-$db = new PDO('mysql:host=sql201.epizy.com;dbname=epiz_32860240_music', 'epiz_32860240', 'chutiya65');
+    $dsn = 'mysql:dbname='.$database.';host='.$servername.'';
+$db = new PDO($dsn, $username, $password);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['timeline_update'])) {
         $update = $db->prepare("UPDATE `player` SET `timeline` = ? WHERE `id` = '2' LIMIT 1;");

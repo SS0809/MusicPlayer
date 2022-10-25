@@ -1,9 +1,6 @@
 <?php
  session_start();
-$servername = "sql201.epizy.com";
-    $username = "epiz_32860240";
-    $password = "chutiya65";
-    $database = "epiz_32860240_music";
+ include "database.php";
     $conn = mysqli_connect($servername,
         $username, $password, $database);
 
