@@ -100,26 +100,14 @@ function getstatus(){
         }
     });
 }    
-function recursionn()
-{
-
-    if (value%2!=0)
-    {
-         getstatus();
-     setTimeout(recursionn, 3000);
-    }
-}
 function even()
 {
     value++;
     if (value%2!=0) {
      document.getElementById('internal-player-right').style.background="green";
-     recursionn();
+         getstatus();
 }
- else
- {
     document.getElementById('internal-player-right').style.background="#656565";
- }
 }
       function stopVideo() {
         player.stopVideo();
