@@ -82,14 +82,13 @@ $timeline =  $row["timeline"];
         if (event.data == YT.PlayerState.PLAYING && !done) {
           //setTimeout(stopVideo, 6000);
           
-            updateStatus(player.getCurrentTime()); 
+           // updateStatus(player.getCurrentTime()+1); 
           done = true;
         }
         if(event.data == YT.PlayerState.PAUSED)
         {
                  //updateStatus(player.getCurrentTime()); 
              //alert(player.getCurrentTime());
-
         }
         else if(event.data == YT.PlayerState.ENDED)
         {
@@ -101,8 +100,8 @@ $timeline =  $row["timeline"];
                 if (value%2!=0) {
                  //console.log("hi");
                  document.getElementById('internal-player-right').style.background="green";
-                 updateStatus(player.getCurrentTime());         
-                 setTimeout(recursionn, 80);
+               updateStatus(player.getCurrentTime()+0.46);        
+                 setTimeout(recursionn, 100);
              }
       }
            function even()
