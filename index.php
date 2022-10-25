@@ -106,7 +106,7 @@ function recursionn()
     if (value%2!=0)
     {
          getstatus();
-     setTimeout(recursionn, 2000);
+     setTimeout(recursionn, 3000);
     }
 }
 function even()
@@ -145,5 +145,4 @@ function even()
     </div>
     <div class="hide"></div>
 </body>
-
 </html>
