@@ -24,6 +24,7 @@ $timeline =  $row["timeline"];
 
 <head>
     <title>music player</title>
+        <h1>LEAF</h1>
     <!--<meta http-equiv="refresh" content="100">-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -39,7 +40,7 @@ $timeline =  $row["timeline"];
 
       // 3. This function creates an <iframe> (and YouTube player)
       //    after the API code downloads.
-      var player;
+      var player , value = 0;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
           height: '250',
@@ -93,11 +94,32 @@ function getstatus(){
         url: "backend.php",             
         dataType: "html",                  
         success: function(data){  
-                   console.log("data");  
+                   console.log("hi");  
          seeek(data);
         return data ;
         }
     });
+}    
+function recursionn()
+{
+
+    if (value%2!=0)
+    {
+         getstatus();
+     setTimeout(recursionn, 2000);
+    }
+}
+function even()
+{
+    value++;
+    if (value%2!=0) {
+     document.getElementById('internal-player-right').style.background="green";
+     recursionn();
+}
+ else
+ {
+    document.getElementById('internal-player-right').style.background="#656565";
+ }
 }
       function stopVideo() {
         player.stopVideo();
@@ -110,7 +132,7 @@ function getstatus(){
     <div id="player" class="internal-player-image"></div>
             <div class="internal-timeline">------------------------------------------</div>
         <div class="internal-name">
-            <h3 class="username" id="username">some music is running</h3>
+            <h3 class="username" id="username">you are listenning the music</h3>
 
         </div>
         <button class="internal-player-left">
@@ -118,7 +140,7 @@ function getstatus(){
             <button class="internal-player-main" onclick="change();"> 
             <div class="internal-player-play" id="play"> 
             </div></button>
-                <button class="internal-player-right"></button>
+                <button class="internal-player-right" id="internal-player-right" onclick="even();">SYNC</button>
     </div>
     </div>
     <div class="hide"></div>
