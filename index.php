@@ -69,12 +69,14 @@ $timeline =  $row["timeline"];
       var done = false;
       function onPlayerStateChange(event) {
         if (event.data == YT.PlayerState.PLAYING && !done) {
-          //setTimeout(stopVideo, 6000);        
+          //setTimeout(stopVideo, 6000);     
+              document.getElementById('play').className = "internal-player-pause";
+              a++;   
           done = true;
         }
         if(event.data == YT.PlayerState.PAUSED)
         {    
-            getstatus();
+            //getstatus();
             // alert(player.getCurrentTime());
              //alert(player.getDuration());
         }
@@ -86,7 +88,7 @@ $timeline =  $row["timeline"];
       }
       function seeek(data){
             player.seekTo(data, true);
-
+            player.playVideo();
       }
 function getstatus(){
       $.ajax({    
