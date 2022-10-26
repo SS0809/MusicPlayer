@@ -43,8 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET")  {
     $sql = "SELECT * from player where id = 2;";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
-  // output data of each row
-   $dataa="";   $namee="";while($row = $result->fetch_assoc()) {
-    echo $row["timeline"];
+while($row = $result->fetch_assoc()) {
+    echo $row["temp"];
    }}}
  ?>

@@ -12,7 +12,6 @@
       $result = mysqli_query($conn, $sql); 
         $num = mysqli_num_rows($result);
    while($row = mysqli_fetch_assoc($result)) {
-  $ytcode =  $row["ytcode"];
 $timeline =  $row["timeline"];
 $temp =  $row["temp"];
   }
@@ -34,7 +33,7 @@ $temp =  $row["temp"];
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
     <script src="script.js"></script>
         <script>
-            var vector = [] , vid = '<?php echo $ytcode;?>'  , temp = '<?php echo $temp+1;?>' , too = 0 ;
+            var vector = [] , vid = playlistarr[<?php echo $temp;?>]  , temp = '<?php echo $temp;?>' , too = 0 ;
 // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
 
@@ -90,14 +89,15 @@ $temp =  $row["temp"];
         {
 
               updatetemp(temp);
-              updateplay();
+              //updateplay();
         }
       }
             function recursionn(){
                 if (value%2!=0) {
                  //console.log("hi");
                  document.getElementById('internal-player-right').style.background="green";
-               updateStatus(player.getCurrentTime()+0.468);        
+               updateStatus(player.getCurrentTime()+0.468);    
+               //updateplay();    
                  setTimeout(recursionn, 100);
              }
       }
@@ -119,7 +119,7 @@ function updateStatus(status_val) {
         }
     });
 }
-function updateplay() {
+/*function //updateplay() {
     //"a5BsZ1MrhXc";
    // var status_val =   document.getElementById('code').value;
    var status_val =   playlistarr[temp];
@@ -133,7 +133,7 @@ function updateplay() {
         }
     });
    // location.href = "admin.php"; 
-}
+}*/
 function updatetemp(status_val) {
     //"a5BsZ1MrhXc";
     $.ajax({
@@ -148,13 +148,15 @@ function resetplay() {
   updatetemp('0');
   temp=0;
     var status_val = playlistarr[temp];
-    updateplay();
+    //updateplay();
     redirect();
 }
 function nextplay() {
+  temp = parseInt(temp);
+  temp += 1 ;
   updatetemp(temp);
     var status_val =   playlistarr[temp];
-    updateplay();
+    //updateplay();
     redirect();
 }
 function redirect()

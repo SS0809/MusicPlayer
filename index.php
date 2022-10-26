@@ -11,7 +11,6 @@
       $result = mysqli_query($conn, $sql); 
         $num = mysqli_num_rows($result);
    while($row = mysqli_fetch_assoc($result)) {
-  $ytcode =  $row["ytcode"];
 $timeline =  $row["timeline"];
 $temp =  $row["temp"];
   }
@@ -57,7 +56,7 @@ $temp =  $row["temp"];
   <script>
     // 2. This code loads the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
-var  vid = '<?php echo $ytcode;?>'  , temp = '<?php echo $temp+1;?>' , too = 0 ;
+var  vid = playlistarr[<?php echo $temp;?>] , temp = '<?php echo $temp;?>' , too = 0 ;
     tag.src = "https://www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
@@ -70,7 +69,7 @@ var  vid = '<?php echo $ytcode;?>'  , temp = '<?php echo $temp+1;?>' , too = 0 ;
       player = new YT.Player('player', {
         height: '250',
         width: '230',
-        videoId: '<?php echo $ytcode;?>',
+        videoId: vid,
         playerVars: {
           'playsinline': 1,
           'controls': 0,
@@ -83,7 +82,7 @@ var  vid = '<?php echo $ytcode;?>'  , temp = '<?php echo $temp+1;?>' , too = 0 ;
     }
     // 4. The API will call this function when the video player is ready.
     function onPlayerReady(event) {
-      player.setPlaybackRate(small);
+      player.setPlaybackRate("small");
       event.target.playVideo(); //play video
       player.setLoop(true);
     }
@@ -111,17 +110,27 @@ var  vid = '<?php echo $ytcode;?>'  , temp = '<?php echo $temp+1;?>' , too = 0 ;
     }
 
     function seeek(data) {
-      player.seekTo(data, true);
+     // player.seekTo(data, true);
+     titlechange2(playlistarr[data]);
+    player.loadVideoById(playlistarr[data],data, "small")
       player.playVideo();
     }
-
+    function updatetemp() {
+    $.ajax({
+        type: "GET",
+        url: "backend.php",
+        success: function (result) {
+          return result ;
+        }
+    });
+}
     function getstatus() {
       $.ajax({
         type: "GET",
         url: "backend.php",
         dataType: "html",
         success: function (data) {
-          console.log("hi");
+          console.log(data);
           seeek(data);
           return data;
         }

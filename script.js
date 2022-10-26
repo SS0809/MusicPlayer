@@ -51,9 +51,17 @@ function titlechange() {
   const aa22 = JSON.parse(httpGet(vidlink2));
   var s2 = aa2.items[0].snippet.title;
   var s3 = aa22.items[0].statistics.likeCount;
-  //console.log(vid);
+  console.log(vid);
   document.getElementById("title").innerHTML = s2;
   document.getElementById("like").innerHTML = s3;
+}
+function titlechange2(data) {
+  //var vid = 'a5BsZ1MrhXc';
+  var vidlink = 'https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + data + '&key=AIzaSyAekxE11gZ3vPmLD87H7EclGNT44BqkDVE';
+  const aa2 = JSON.parse(httpGet(vidlink));
+  var s2 = aa2.items[0].snippet.title;
+  console.log(vid);
+  document.getElementById("title").innerHTML = s2;
 }
   function disableScroll() {
     // Get the current page scroll position
