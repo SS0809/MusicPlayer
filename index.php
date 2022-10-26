@@ -13,6 +13,7 @@
    while($row = mysqli_fetch_assoc($result)) {
   $ytcode =  $row["ytcode"];
 $timeline =  $row["timeline"];
+$temp =  $row["temp"];
   }
     }
     else {
@@ -29,11 +30,34 @@ $timeline =  $row["timeline"];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body onload="bgchange();">
+  <div class="player">
+    <div id="player" class="internal-player-image"></div>
+    <div class="internal-timeline" id="internal-timeline">------------------------------------------</div>
+    <div class="internal-name">
+      <h3 class="title" id="title">you are listenning the music</h3>
+
+    </div>
+    <!-- <button class="internal-player-left">
+        </button>-->
+    <button class="internal-player-main" id="internal-player-main" onclick="change();">
+      <div class="internal-player-play" id="play">
+      </div>
+    </button>
+    <button class="internal-player-right" id="internal-player-right" onclick="even();">SYNC</button>
+  </div>
+  </div>
+  likes: <div id="like"></div>
+  <div class="hide"></div>
+
+  <script src="script.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script>
     // 2. This code loads the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
-
+var  vid = '<?php echo $ytcode;?>'  , temp = '<?php echo $temp+1;?>' , too = 0 ;
     tag.src = "https://www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
@@ -59,7 +83,7 @@ $timeline =  $row["timeline"];
     }
     // 4. The API will call this function when the video player is ready.
     function onPlayerReady(event) {
-      setPlaybackRate(small);
+      player.setPlaybackRate(small);
       event.target.playVideo(); //play video
       player.setLoop(true);
     }
@@ -117,29 +141,38 @@ $timeline =  $row["timeline"];
       player.stopVideo();
     }
     disableScroll();
-  </script>
-</head>
-
-<body onload="bgchange();">
-  <div class="player">
-    <div id="player" class="internal-player-image"></div>
-    <!-- <div class="internal-timeline">------------------------------------------</div>-->
-    <div class="internal-name">
-      <h3 class="title" id="title">you are listenning the music</h3>
-
-    </div>
-    <!-- <button class="internal-player-left">
-        </button>-->
-    <button class="internal-player-main" id="internal-player-main" onclick="change();">
-      <div class="internal-player-play" id="play">
-      </div>
-    </button>
-    <button class="internal-player-right" id="internal-player-right" onclick="even();">SYNC</button>
-  </div>
-  </div>
-  likes: <div id="like"></div>
-  <div class="hide"></div>
-  <script src="script.js"></script>
+    let s = '';
+function timeline()
+{
+  too = player.getCurrentTime()/player.getDuration();
+  too = too * 100 ;
+  too = parseInt(too, 10); 
+   //console.log(too); 
+      let ss = '' ,  bo = false;;
+   for(var i = 0 ;i<40;i++)
+   {
+    if(i*3 == too)
+    {
+      ss += '*+*';
+      bo = true;
+    }
+    else
+    {
+      ss += '-';
+    }
+   }
+   if (bo) {
+    s=ss;
+   }
+   //console.log(s);
+     bo = false;
+   document.getElementById("internal-timeline").innerHTML = s;
+}
+setInterval(() => {
+  timeline();
+}, 2000);
+  titlechange();
+    </script>
 </body>
 
 </html>

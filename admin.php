@@ -32,9 +32,9 @@ $temp =  $row["temp"];
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
-    <script type="text/javascript" src="apiv4.js"></script>
+    <script src="script.js"></script>
         <script>
-            var vector = [] , vid = '<?php echo $ytcode;?>'  , temp = '<?php echo $temp+1;?>'  ;
+            var vector = [] , vid = '<?php echo $ytcode;?>'  , temp = '<?php echo $temp+1;?>' , too = 0 ;
 // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
 
@@ -52,7 +52,7 @@ $temp =  $row["temp"];
           videoId: vid,
           playerVars: {
             'playsinline': 1,
-            'controls':1,
+            'controls':0,
             suggestedQuality:'small',
           },
           events: {
@@ -75,8 +75,10 @@ $temp =  $row["temp"];
       function onPlayerStateChange(event) {
         if (event.data == YT.PlayerState.PLAYING && !done) {
           //setTimeout(stopVideo, 6000);
-          
+          //console.log(player.getCurrentTime());
+          //console.log(player.getDuration());
            // updateStatus(player.getCurrentTime()+1); 
+          
           done = true;
         }
         if(event.data == YT.PlayerState.PAUSED)
@@ -130,7 +132,7 @@ function updateplay() {
         success: function (result) {
         }
     });
-    location.href = "admin.php"; 
+   // location.href = "admin.php"; 
 }
 function updatetemp(status_val) {
     //"a5BsZ1MrhXc";
@@ -143,21 +145,60 @@ function updatetemp(status_val) {
     });
 }
 function resetplay() {
-  updatetemp(0);
-    var status_val =   playlistarr[0];
+  updatetemp('0');
+  temp=0;
+    var status_val = playlistarr[temp];
     updateplay();
+    redirect();
 }
 function nextplay() {
   updatetemp(temp);
     var status_val =   playlistarr[temp];
     updateplay();
+    redirect();
 }
+function redirect()
+{
+  setInterval(() => {
+    location.href = "admin.php"; 
+  }, 500);
+}
+let s = '';
+function timeline()
+{
+  too = player.getCurrentTime()/player.getDuration();
+  too = too * 100 ;
+  too = parseInt(too, 10); 
+   //console.log(too); 
+      let ss = '' ,  bo = false;;
+   for(var i = 0 ;i<40;i++)
+   {
+    if(i*3 == too)
+    {
+      ss += '*+*';
+      bo = true;
+    }
+    else
+    {
+      ss += '-';
+    }
+   }
+   if (bo) {
+    s=ss;
+   }
+   //console.log(s);
+     bo = false;
+   document.getElementById("internal-timeline").innerHTML = s;
+}
+setInterval(() => {
+  timeline();
+}, 2000);
     </script>
 </head>
 <body onload="bgchange();">
     <div class="player">
     <div id="player" class="internal-player-image"></div>
-            <!--<div class="internal-timeline">------------------------------------------</div>-->
+            <div class="internal-timeline" id = "internal-timeline">----------------------------------------</div>
         <div class="internal-name">
             <h3 class="title" id="title">you are running the music</h3>
 
@@ -177,7 +218,6 @@ function nextplay() {
 
     </div>-->
     <div id="updatedAt" class="hide"></div>
-    <script src="script.js"></script>
   <script type="text/javascript">
     function list(textnode){
   const newDiv = document.createElement("div");
