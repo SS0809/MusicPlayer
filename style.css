@@ -2,9 +2,12 @@ body {
     background-color: black;
     font-family: cursive;
     color: white;
-    padding: 5%;
+    padding: 1%;
 }
-
+.h11{
+        margin: 1%;
+        padding: 1%;
+}
 .player {
     padding: 20px 20px;
     margin: 1%;
