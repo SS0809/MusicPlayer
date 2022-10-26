@@ -19,122 +19,127 @@ $timeline =  $row["timeline"];
         die("Error". mysqli_connect_error());
 }
 ?>
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
-    <title>music player</title>
-        <h1 class="h11">LEAF</h1>
-    <!--<meta http-equiv="refresh" content="100">-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
-        <script>
-// 2. This code loads the IFrame Player API code asynchronously.
-      var tag = document.createElement('script');
+  <title>music player</title>
+  <h1 class="h11">LEAF</h1>
+  <!--<meta http-equiv="refresh" content="100">-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    // 2. This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
 
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-      // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
-      var player , value = 0;
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-          height: '250',
-          width: '230',
-          videoId: '<?php echo $ytcode;?>',
-          playerVars: {
-            'playsinline': 1,
-            'controls':0,
-          },
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
-        });
-      }
-      // 4. The API will call this function when the video player is ready.
-      function onPlayerReady(event) {
-        setPlaybackRate(small);
-        event.target.playVideo();//play video
-                  player.setLoop(true);          
-      }
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    var player, value = 0;
 
-      // 5. The API calls this function when the player's state changes.
-      //    The function indicates that when playing a video (state=1),
-      //    the player should play for six seconds and then stop.
-      var done = false;
-      function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          //setTimeout(stopVideo, 6000);     
-              document.getElementById('play').className = "internal-player-pause";
-              a++;   
-          done = true;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '250',
+        width: '230',
+        videoId: '<?php echo $ytcode;?>',
+        playerVars: {
+          'playsinline': 1,
+          'controls': 0,
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
         }
-        if(event.data == YT.PlayerState.PAUSED)
-        {    
-            //getstatus();
-            // alert(player.getCurrentTime());
-             //alert(player.getDuration());
-        }
-        else if(event.data == YT.PlayerState.ENDED)
-        {
-                  location.href = "index.php";
+      });
+    }
+    // 4. The API will call this function when the video player is ready.
+    function onPlayerReady(event) {
+      setPlaybackRate(small);
+      event.target.playVideo(); //play video
+      player.setLoop(true);
+    }
 
-        }
+    // 5. The API calls this function when the player's state changes.
+    //    The function indicates that when playing a video (state=1),
+    //    the player should play for six seconds and then stop.
+    var done = false;
+
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.PLAYING && !done) {
+        //setTimeout(stopVideo, 6000);     
+        document.getElementById('play').className = "internal-player-pause";
+        a++;
+        done = true;
       }
-      function seeek(data){
-            player.seekTo(data, true);
-            player.playVideo();
+      if (event.data == YT.PlayerState.PAUSED) {
+        //getstatus();
+        // alert(player.getCurrentTime());
+        //alert(player.getDuration());
+      } else if (event.data == YT.PlayerState.ENDED) {
+        location.href = "index.php";
+
       }
-function getstatus(){
-      $.ajax({    
+    }
+
+    function seeek(data) {
+      player.seekTo(data, true);
+      player.playVideo();
+    }
+
+    function getstatus() {
+      $.ajax({
         type: "GET",
-        url: "backend.php",             
-        dataType: "html",                  
-        success: function(data){  
-                   console.log("hi");  
-         seeek(data);
-        return data ;
+        url: "backend.php",
+        dataType: "html",
+        success: function (data) {
+          console.log("hi");
+          seeek(data);
+          return data;
         }
-    });
-}    
-function even()
-{
-    value++;
-    if (value%2!=0) {
-     document.getElementById('internal-player-right').style.background="green";
-         getstatus();
-}
-    document.getElementById('internal-player-right').style.background="#656565";
-}
-      function stopVideo() {
-        player.stopVideo();
+      });
+    }
+
+    function even() {
+      value++;
+      if (value % 2 != 0) {
+        document.getElementById('internal-player-right').style.background = "green";
+        getstatus();
       }
+      document.getElementById('internal-player-right').style.background = "#656565";
+    }
 
-    </script>
+    function stopVideo() {
+      player.stopVideo();
+    }
+    disableScroll();
+  </script>
 </head>
-<body onload="bgchange();">
-    <div class="player">
-    <div id="player" class="internal-player-image"></div>
-           <!-- <div class="internal-timeline">------------------------------------------</div>-->
-        <div class="internal-name">
-            <h3 class="title" id="title">you are listenning the music</h3>
 
-        </div>
-       <!-- <button class="internal-player-left">
+<body onload="bgchange();">
+  <div class="player">
+    <div id="player" class="internal-player-image"></div>
+    <!-- <div class="internal-timeline">------------------------------------------</div>-->
+    <div class="internal-name">
+      <h3 class="title" id="title">you are listenning the music</h3>
+
+    </div>
+    <!-- <button class="internal-player-left">
         </button>-->
-            <button class="internal-player-main" id="internal-player-main" onclick="change();"> 
-            <div class="internal-player-play" id="play"> 
-            </div></button>
-                <button class="internal-player-right" id="internal-player-right" onclick="even();">SYNC</button>
-    </div>
-    </div>
-            likes: <div id="like"></div>
-    <div class="hide"></div>
-    <script src="script.js"></script>
+    <button class="internal-player-main" id="internal-player-main" onclick="change();">
+      <div class="internal-player-play" id="play">
+      </div>
+    </button>
+    <button class="internal-player-right" id="internal-player-right" onclick="even();">SYNC</button>
+  </div>
+  </div>
+  likes: <div id="like"></div>
+  <div class="hide"></div>
+  <script src="script.js"></script>
 </body>
+
 </html>

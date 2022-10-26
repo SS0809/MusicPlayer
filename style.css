@@ -1,70 +1,81 @@
 body {
-    background-color:black;
-    color:white;
-    padding:5%;
+    background-color: black;
+    color: white;
+    padding: 5%;
 }
-.player{
-    padding:20px 20px;
-      margin: 1%;
-    background-color:transparent;
-    border-radius:16px;
-    }
-.ytplayer{
+
+.player {
+    padding: 20px 20px;
+    margin: 1%;
+    background-color: transparent;
+    border-radius: 16px;
+}
+
+.ytplayer {
     padding: 10px;
 }
-.internal-player-image{
-    height:250px;
-    width:250px;
+
+.internal-player-image {
+    height: 250px;
+    width: 250px;
     margin: 1%;
-    border-radius:8px;
-    background-color:green;
+    border-radius: 8px;
+    background-color: green;
 }
-.internal-timeline{
+
+.internal-timeline {
     margin: 5%;
- }
-.internal-name{
-    margin:4%;
- }
-.internal-player-play{
-    border-radius:8px;
-    height:30px;
-    width:30px;
-    margin: 5%;
-    z-index:123;
-    background-color:white;
 }
-.internal-player-pause{
-    border-radius:8px;
-    height:30px;
-    width:30px;
-    margin: 5%;
-    z-index:123;
-    background-color:black;
+
+.internal-name {
+    margin: 4%;
 }
-.internal-player-main{
-    border-radius:8px;
-    height:50px;
-    width:50px;
+
+.internal-player-play {
+    border-radius: 8px;
+    height: 30px;
+    width: 30px;
     margin: 5%;
-    float: left;
-    background-color:green;
+    z-index: 123;
+    background-color: white;
 }
-.internal-player-left{
-    border-radius:8px;
-    height:50px;
-    width:50px;
+
+.internal-player-pause {
+    border-radius: 8px;
+    height: 30px;
+    width: 30px;
+    margin: 5%;
+    z-index: 123;
+    background-color: black;
+}
+
+.internal-player-main {
+    border-radius: 8px;
+    height: 50px;
+    width: 50px;
     margin: 5%;
     float: left;
-    background-color:#656565;
+    background-color: green;
 }
-.internal-player-right{
-    border-radius:8px;
-    height:50px;
-    width:50px;
-    margin:5%;
+
+.internal-player-left {
+    border-radius: 8px;
+    height: 50px;
+    width: 50px;
+    margin: 5%;
+    float: left;
+    background-color: #656565;
+}
+
+.internal-player-right {
+    border-radius: 8px;
+    height: 50px;
+    width: 50px;
+    margin: 5%;
     float: right;
-    background-color:#656565;
+    background-color: #656565;
 }
-.hide{
-    padding-bottom:65%;
+
+.hide {
+    padding-bottom: 65%;
 }
