@@ -12,10 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode($_POST);
     }
     else if (isset($_POST['play_update'])) {
-        $update = $db->prepare("UPDATE `player` SET `ytcode` = ? WHERE `id` = '2' LIMIT 1;");
-        $update->execute([$_POST['status']]);
-        echo json_encode($_POST);
-    }
+      $update = $db->prepare("UPDATE `player` SET `ytcode` = ? WHERE `id` = '2' LIMIT 1;");
+      $update->execute([$_POST['status']]);
+      echo json_encode($_POST);
+  }
+  else if (isset($_POST['temp_update'])) {
+    $update = $db->prepare("UPDATE `player` SET `temp` = ? WHERE `id` = '2' LIMIT 1;");
+    $update->execute([$_POST['status']]);
+    echo json_encode($_POST);
+}
 }
  else {
     //echo json_encode(array());

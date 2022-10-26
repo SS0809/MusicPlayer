@@ -42,18 +42,19 @@
     xmlHttpReq.open("GET", theUrl, false);
     xmlHttpReq.send(null);
     return xmlHttpReq.responseText;
-  }
-  var vid = 'a5BsZ1MrhXc';
+}
+function titlechange() {
+  //var vid = 'a5BsZ1MrhXc';
   var vidlink = 'https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + vid + '&key=AIzaSyAekxE11gZ3vPmLD87H7EclGNT44BqkDVE';
   var vidlink2 = 'https://www.googleapis.com/youtube/v3/videos?part=statistics&id=' + vid + '&key=AIzaSyAekxE11gZ3vPmLD87H7EclGNT44BqkDVE';
   const aa2 = JSON.parse(httpGet(vidlink));
   const aa22 = JSON.parse(httpGet(vidlink2));
   var s2 = aa2.items[0].snippet.title;
   var s3 = aa22.items[0].statistics.likeCount;
-  console.log(s3);
+  //console.log(vid);
   document.getElementById("title").innerHTML = s2;
   document.getElementById("like").innerHTML = s3;
-
+}
   function disableScroll() {
     // Get the current page scroll position
     scrollTop =
@@ -66,4 +67,13 @@
       window.onscroll = function () {
         window.scrollTo(scrollLeft, scrollTop);
       };
-  }
+}
+var playlistarr = [];
+  var playlist = 'PLKw0genvrqvkuwSACwjvroI4I9IlZ9ERz', maxResults = 50;
+  var playlistlink = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults='+maxResults+'&playlistId=' + playlist + '&key=AIzaSyAekxE11gZ3vPmLD87H7EclGNT44BqkDVE';
+  const aaa2 = JSON.parse(httpGet(playlistlink));
+  for(var i = 0 ,s2;i<maxResults;i++){
+   s2 = aaa2.items[i].snippet.resourceId.videoId;
+  playlistarr.push(s2);
+  console.log(s2);
+}
