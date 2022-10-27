@@ -109,30 +109,50 @@ var  vid = playlistarr[<?php echo $temp;?>] , temp = '<?php echo $temp;?>' , too
       }
     }
 
-    function seeek(data) {
-     // player.seekTo(data, true);
-     titlechange2(playlistarr[data]);
-    player.loadVideoById(playlistarr[data],data, "small")
-      player.playVideo();
+    function seeek(data,dat) {
+     if (vid != playlistarr[data] ) {
+
     }
-    function updatetemp() {
-    $.ajax({
-        type: "GET",
-        url: "backend.php",
-        success: function (result) {
-          return result ;
-        }
-    });
-}
+    else
+    {
+      alert("else");
+      alert(dat);
+     player.seekTo(dat, true);
+           player.playVideo();
+    }
+    }
     function getstatus() {
       $.ajax({
         type: "GET",
         url: "backend.php",
         dataType: "html",
         success: function (data) {
-          console.log(data);
-          seeek(data);
+               if (vid != playlistarr[data] ) {
+                vid = playlistarr[data];
+          titlechange2(playlistarr[data]);
+    player.loadVideoById(playlistarr[data], "small");
+         gettimeline();
+            //alert("if");
+       }
+       else
+       {
+        gettimeline();
+       }
           return data;
+        }
+      });
+    }
+        function gettimeline() {
+      $.ajax({
+        type: "PUT",
+        url: "backend.php",
+        dataType: "html",
+        success: function (dat) {
+         player.seekTo(dat, true);
+           player.playVideo();
+              //alert("else");
+              // alert(dat);
+          return dat;
         }
       });
     }
@@ -143,7 +163,7 @@ var  vid = playlistarr[<?php echo $temp;?>] , temp = '<?php echo $temp;?>' , too
         document.getElementById('internal-player-right').style.background = "green";
         getstatus();
       }
-      document.getElementById('internal-player-right').style.background = "#656565";
+      //document.getElementById('internal-player-right').style.background = "#656565";
     }
 
     function stopVideo() {
