@@ -1,5 +1,5 @@
 <?php
- session_start();
+/* session_start();
  include "database.php";
     $conn = mysqli_connect($servername,
         $username, $password, $database);
@@ -15,7 +15,7 @@ $temp =  $row["temp"];
     }
     else {
         die("Error". mysqli_connect_error());
-}
+}*/
 ?>
     <!DOCTYPE html>
 <html>
@@ -31,7 +31,8 @@ $temp =  $row["temp"];
     <script src="script.js"></script>
         <script>
             document.body.style.background = "linear-gradient(135deg,rgba(155,81,224) 30%,rgba(6,147,227,1) 100%)";
-            var vector = [] , vid = playlistarr[<?php echo $temp;?>]  , temp = '<?php echo $temp;?>' , too = 0 ;
+            var  temp = '0';
+            var vector = [] , vid = playlistarr[temp]   , too = 0 ;
 // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
 
@@ -109,12 +110,14 @@ $temp =  $row["temp"];
         player.stopVideo();
       }
 function updateStatus(status_val) {
+        //status_val = JSON.stringify({a: status_val, b: username});
     $.ajax({
         type: "POST",
         url: "backend.php",
-        data: {timeline_update: true, status: status_val},
+        data: {timeline: username, status: status_val},
         success: function (result) {
-            //alert(result);
+            //result = JSON.parse(result);
+         console.log(result);
         }
     });
 }
@@ -138,8 +141,9 @@ function updatetemp(status_val) {
     $.ajax({
         type: "POST",
         url: "backend.php",
-        data: {temp_update: true, status: status_val},
+        data: {timeline: username, status: status_val},
         success: function (result) {
+                 alert(result);
         }
     });
 }
@@ -194,11 +198,6 @@ function timeline()
 setInterval(() => {
   timeline();
 }, 2000);
-function username()
-{
-    var username  =  document.getElementById('username').value;
-    document.cookie = "username="+username+"";
-}
 function readCookie(name) {
     //credit https://stackoverflow.com/q/5639346
     var nameEQ = name + "=";
@@ -210,13 +209,28 @@ function readCookie(name) {
     }
     return null;
 }
-var x =  document.cookie ;
-alert(readCookie("username"));
+function remdiv()
+{
+   var remdiv = document.getElementById('remdiv');
+   remdiv.style.display = "none";
+}
+function username()
+{
+if(readCookie("username"))
+{
+    //alert(readCookie("username"));
+    remdiv();
+}
+else
+{
+    var username  =  document.getElementById('username').value;
+    document.cookie = "username="+username+"";
+}
+}
     </script>
-
 </head>
-<body>
-    <div>
+<body onload="username();">
+    <div id="remdiv">
         <label>USERNAME
         <input type="text" id="username">
         </label>

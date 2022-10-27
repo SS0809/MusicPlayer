@@ -136,7 +136,7 @@ var  vid = playlistarr[<?php echo $temp;?>] , temp = '<?php echo $temp;?>' , too
     player.loadVideoById(playlistarr[data.a], "small");
              player.seekTo(data.b, true);
            player.playVideo();
-            //alert("if");
+            alert("if");
        }
        else
        {
