@@ -33,6 +33,7 @@ $temp =  $row["temp"];
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
     <script src="script.js"></script>
         <script>
+            document.body.style.background = "linear-gradient(135deg,rgba(155,81,224) 30%,rgba(6,147,227,1) 100%)";
             var vector = [] , vid = playlistarr[<?php echo $temp;?>]  , temp = '<?php echo $temp;?>' , too = 0 ;
 // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
@@ -197,7 +198,7 @@ setInterval(() => {
 }, 2000);
     </script>
 </head>
-<body onload="bgchange();">
+<body>
     <div class="player">
     <div id="player" class="internal-player-image"></div>
             <div class="internal-timeline" id = "internal-timeline">----------------------------------------</div>

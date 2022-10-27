@@ -21,11 +21,20 @@
       "#421e8a", "#541e8a", "#661e8a", "#781e8a", "#8a1e8a", "#8a1e78", "#8a1e66",
       "#8a1e54", "#8a1e42", "#8a1e30", "#8a1e1e"
     ];
+             /*
+              #000428 → #004e92
+              #4568dc → #b06ab3
+              #3a1c71 → #d76d77 → #ffaf7b
+              #c33764 → #1d2671
+              #42275a → #734b6d
+              #cc2b5e → #753a88
+             */
     var i = 0,
       j = 36;
     setInterval(function () {
       //document.body.style.backgroundColor = arr[i];
       document.body.style.background = "linear-gradient(" + i * 5 + "deg,  " + arr[j] + " ,black," + arr[i] + ")";
+     //  document.body.style.background = "linear-gradient(135deg,rgba(6,147,227,1) 0%,rgba(155,81,224) 100%)";
       i++;
       j--;
       if (i == 36) {
