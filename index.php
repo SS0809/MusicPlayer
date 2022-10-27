@@ -3,11 +3,9 @@
  include "database.php";
     $conn = mysqli_connect($servername,
         $username, $password, $database);
-
-    if($conn) {
-    //  echo "success";
-           //$sql = "INSERT INTO `player`( `timeline`, `username`, `ytcode`) VALUES ('0:00','saurabhss','M7lc1UVf-VE')";
-        $sql= "SELECT * FROM player WHERE username = 'saurabhss';";
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $status = $_POST['user'];
+        $sql= "SELECT * FROM player WHERE username = '$status';";
       $result = mysqli_query($conn, $sql); 
         $num = mysqli_num_rows($result);
    while($row = mysqli_fetch_assoc($result)) {
@@ -136,7 +134,7 @@ var  vid = playlistarr[<?php echo $temp;?>] , temp = '<?php echo $temp;?>' , too
     player.loadVideoById(playlistarr[data.a], "small");
              player.seekTo(data.b, true);
            player.playVideo();
-            alert("if");
+            //alert("if");
        }
        else
        {
