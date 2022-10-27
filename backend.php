@@ -1,23 +1,24 @@
 <?php
  session_start();
  include "database.php";
+        $S = "saurabhss";
     $conn = mysqli_connect($servername,
         $username, $password, $database);
         $dsn = 'mysql:dbname='.$database.';host='.$servername.'';
 $db = new PDO($dsn, $username, $password);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['timeline_update'])) {
-        $update = $db->prepare("UPDATE `player` SET `timeline` = ? WHERE `id` = '2' LIMIT 1;");
+        $update = $db->prepare("UPDATE `player` SET `timeline` = ? WHERE `username` = '$S' LIMIT 1;");
         $update->execute([$_POST['status']]);
         echo json_encode($_POST);
     }
     else if (isset($_POST['play_update'])) {
-      $update = $db->prepare("UPDATE `player` SET `ytcode` = ? WHERE `id` = '2' LIMIT 1;");
+      $update = $db->prepare("UPDATE `player` SET `ytcode` = ? WHERE `username` = '$S' LIMIT 1;");
       $update->execute([$_POST['status']]);
       echo json_encode($_POST);
   }
   else if (isset($_POST['temp_update'])) {
-    $update = $db->prepare("UPDATE `player` SET `temp` = ? WHERE `id` = '2' LIMIT 1;");
+    $update = $db->prepare("UPDATE `player` SET `temp` = ? WHERE `username` = '$S' LIMIT 1;");
     $update->execute([$_POST['status']]);
     echo json_encode($_POST);
 }
@@ -25,32 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  else {
     //echo json_encode(array());
 }
-    if($conn) {
-    //  echo "success";
-           //$sql = "INSERT INTO `player`( `timeline`, `username`, `ytcode`) VALUES ('0:00','saurabhss','M7lc1UVf-VE')";
-        $sql= "SELECT * FROM player WHERE username = 'saurabhss';";
-      $result = mysqli_query($conn, $sql); 
-        $num = mysqli_num_rows($result);
-   while($row = mysqli_fetch_assoc($result)) {
-  $ytcode =  $row["ytcode"];
-$timeline =  $row["timeline"];
-  }
-    }
-    else {
-        die("Error". mysqli_connect_error());
-}
-if($_SERVER["REQUEST_METHOD"] == "GET")  {
-    $sql = "SELECT * from player where id = 2;";
+if($_SERVER["REQUEST_METHOD"] == "POST")  {
+    $sql = "SELECT * from player where username = '$S';";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 while($row = $result->fetch_assoc()) {
-    echo $row["temp"];
-   }}}
-   if($_SERVER["REQUEST_METHOD"] == "PUT")  {
-    $sql = "SELECT * from player where id = 2;";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-while($row = $result->fetch_assoc()) {
-    echo $row["timeline"];
+   // echo $row["temp"]."s".$row["timeline"];
+    $arr = array('a' => $row["temp"], 'b' => $row["timeline"]);
+    //echo json_encode($row["temp"],$row["timeline"]);
+    echo json_encode($arr);
    }}}
  ?>

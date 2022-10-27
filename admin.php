@@ -3,10 +3,7 @@
  include "database.php";
     $conn = mysqli_connect($servername,
         $username, $password, $database);
-
-
     if($conn) {
-
            //$sql = "INSERT INTO `player`( `timeline`, `username`, `ytcode`) VALUES ('0:00','saurabhss','M7lc1UVf-VE')";
         $sql= "SELECT * FROM player WHERE username = 'saurabhss';";
       $result = mysqli_query($conn, $sql); 
@@ -117,6 +114,7 @@ function updateStatus(status_val) {
         url: "backend.php",
         data: {timeline_update: true, status: status_val},
         success: function (result) {
+            //alert(result);
         }
     });
 }
@@ -199,6 +197,12 @@ setInterval(() => {
     </script>
 </head>
 <body>
+    <!--<div>
+        <label>USERNAME
+        <input type="text" name="">
+        </label>
+        <button onclick="">CHECK</button>
+    </div>-->
     <div class="player">
     <div id="player" class="internal-player-image"></div>
             <div class="internal-timeline" id = "internal-timeline">----------------------------------------</div>

@@ -63,7 +63,7 @@ var  vid = playlistarr[<?php echo $temp;?>] , temp = '<?php echo $temp;?>' , too
 
     // 3. This function creates an <iframe> (and YouTube player)
     //    after the API code downloads.
-    var player, value = 0;
+    var player;
 
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('player', {
@@ -123,47 +123,34 @@ var  vid = playlistarr[<?php echo $temp;?>] , temp = '<?php echo $temp;?>' , too
     }
     function getstatus() {
       $.ajax({
-        type: "GET",
+        type: "POST",
         url: "backend.php",
-        dataType: "html",
+        //data: {timeline_update: true, status: "saurabhss"},
         success: function (data) {
-               if (vid != playlistarr[data] ) {
-                vid = playlistarr[data];
-          titlechange2(playlistarr[data]);
-    player.loadVideoById(playlistarr[data], "small");
-         gettimeline();
+         // alert(data);
+          data = JSON.parse(data);
+               if (vid != playlistarr[data.a] ) {
+                vid = playlistarr[data.a];
+          titlechange2(playlistarr[data.a]);
+    player.loadVideoById(playlistarr[data.a], "small");
+             player.seekTo(data.b, true);
+           player.playVideo();
             //alert("if");
        }
        else
        {
-        gettimeline();
+            player.seekTo(data.b, true);
+           player.playVideo();
        }
           return data;
         }
       });
     }
-        function gettimeline() {
-      $.ajax({
-        type: "PUT",
-        url: "backend.php",
-        dataType: "html",
-        success: function (dat) {
-         player.seekTo(dat, true);
-           player.playVideo();
-              //alert("else");
-              // alert(dat);
-          return dat;
-        }
-      });
-    }
-
     function even() {
-      value++;
-      if (value % 2 != 0) {
+
         document.getElementById('internal-player-right').style.background = "green";
         getstatus();
-      }
-      //document.getElementById('internal-player-right').style.background = "#656565";
+        //document.getElementById('internal-player-right').style.background = "#656565";
     }
 
     function stopVideo() {
