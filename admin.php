@@ -1,5 +1,5 @@
 <?php
-/* session_start();
+session_start();
  include "database.php";
     $conn = mysqli_connect($servername,
         $username, $password, $database);
@@ -9,13 +9,12 @@
       $result = mysqli_query($conn, $sql); 
         $num = mysqli_num_rows($result);
    while($row = mysqli_fetch_assoc($result)) {
-$timeline =  $row["timeline"];
 $temp =  $row["temp"];
   }
     }
     else {
         die("Error". mysqli_connect_error());
-}*/
+}
 ?>
     <!DOCTYPE html>
 <html>
@@ -31,7 +30,7 @@ $temp =  $row["temp"];
     <script src="script.js"></script>
         <script>
             document.body.style.background = "linear-gradient(135deg,rgba(155,81,224) 30%,rgba(6,147,227,1) 100%)";
-            var  temp = '0';
+            var  temp = '<?php echo $temp ;  ?>';
             var vector = [] , vid = playlistarr[temp]   , too = 0 ;
 // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
@@ -111,13 +110,14 @@ $temp =  $row["temp"];
       }
 function updateStatus(status_val) {
         //status_val = JSON.stringify({a: status_val, b: username});
+            var username = readCookie("username");
     $.ajax({
         type: "POST",
         url: "backend.php",
         data: {timeline: username, status: status_val},
         success: function (result) {
             //result = JSON.parse(result);
-         console.log(result);
+       // alert(result);
         }
     });
 }
@@ -138,17 +138,19 @@ function updateStatus(status_val) {
 }*/
 function updatetemp(status_val) {
     //"a5BsZ1MrhXc";
+    var username = readCookie("username");
     $.ajax({
         type: "POST",
         url: "backend.php",
-        data: {timeline: username, status: status_val},
+        data: {temp_update: username, statuss: status_val},
         success: function (result) {
-                 alert(result);
+                // alert(result);
         }
     });
 }
 function resetplay() {
   updatetemp('0');
+  updateStatus('0');
   temp=0;
     var status_val = playlistarr[temp];
     //updateplay();
@@ -216,6 +218,8 @@ function remdiv()
 }
 function username()
 {
+    //need to load temp
+    getstatus();
 if(readCookie("username"))
 {
     //alert(readCookie("username"));
@@ -227,6 +231,16 @@ else
     document.cookie = "username="+username+"";
 }
 }
+  function getstatus() {
+      $.ajax({
+        type: "GET",
+        url: "backend.php",
+        success: function (data) {
+          temp = data ;
+          //alert(temp);
+        }
+      });
+    }
     </script>
 </head>
 <body onload="username();">
