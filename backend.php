@@ -31,9 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")  {
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 while($row = $result->fetch_assoc()) {
-   // echo $row["temp"]."s".$row["timeline"];
     $arr = array('a' => $row["temp"], 'b' => $row["timeline"]);
-    //echo json_encode($row["temp"],$row["timeline"]);
     echo json_encode($arr);
    }}}
  ?>

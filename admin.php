@@ -194,15 +194,34 @@ function timeline()
 setInterval(() => {
   timeline();
 }, 2000);
+function username()
+{
+    var username  =  document.getElementById('username').value;
+    document.cookie = "username="+username+"";
+}
+function readCookie(name) {
+    //credit https://stackoverflow.com/q/5639346
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+var x =  document.cookie ;
+alert(readCookie("username"));
     </script>
+
 </head>
 <body>
-    <!--<div>
+    <div>
         <label>USERNAME
-        <input type="text" name="">
+        <input type="text" id="username">
         </label>
-        <button onclick="">CHECK</button>
-    </div>-->
+        <button onclick="username();">CHECK</button>
+    </div>
     <div class="player">
     <div id="player" class="internal-player-image"></div>
             <div class="internal-timeline" id = "internal-timeline">----------------------------------------</div>
