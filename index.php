@@ -1,11 +1,10 @@
 <?php
  session_start();
  include "database.php";
-    $conn = mysqli_connect($servername,
+ $conn = mysqli_connect($servername,
         $username, $password, $database);
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $status = $_POST['user'];
-        $sql= "SELECT * FROM player WHERE username = '$status';";
+    if($conn) {
+        $sql= "SELECT * FROM player WHERE username = 'saurabhss';";
       $result = mysqli_query($conn, $sql); 
         $num = mysqli_num_rows($result);
    while($row = mysqli_fetch_assoc($result)) {

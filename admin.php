@@ -80,7 +80,7 @@ $temp =  $row["temp"];
                 if (value%2!=0) {
                  //console.log("hi");
                  document.getElementById('internal-player-right').style.background="green";
-               updateStatus(player.getCurrentTime()+0.468);    
+               updateStatus(player.getCurrentTime()+0.463);    
                //updateplay();    
                  setTimeout(recursionn, 100);
              }
