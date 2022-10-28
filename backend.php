@@ -1,7 +1,7 @@
 <?php
  session_start();
  include "database.php";
-        $S = "saurabhss";
+        $S =  $_SESSION['username'] ;
     $conn = mysqli_connect($servername,
         $username, $password, $database);
         $dsn = 'mysql:dbname='.$database.';host='.$servername.'';

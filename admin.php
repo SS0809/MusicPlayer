@@ -1,10 +1,17 @@
 <?php
 session_start();
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+  $_SESSION['username'] =  $_POST["user"];
+}
+if (empty($_SESSION['username'])) {
+    header("Location:root.html");
+}
  include "database.php";
     $conn = mysqli_connect($servername,
         $username, $password, $database);
+    $user_name  = $_SESSION['username'] ;
     if($conn) {
-        $sql= "SELECT * FROM player WHERE username = 'saurabhss';";
+        $sql= "SELECT * FROM player WHERE username = '$user_name';";
       $result = mysqli_query($conn, $sql); 
         $num = mysqli_num_rows($result);
    while($row = mysqli_fetch_assoc($result)) {
@@ -145,7 +152,7 @@ function resetplay() {
 }
 function nextplay() {
   temp = parseInt(temp);
-  temp += 1 ;
+  temp++;
   updatetemp(temp);
     var status_val =   playlistarr[temp];
     //updateplay();
