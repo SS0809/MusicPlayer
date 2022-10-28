@@ -109,7 +109,7 @@ var  vid = playlistarr[<?php echo $temp;?>] , temp = '<?php echo $temp;?>' , too
         // alert(player.getCurrentTime());
         //alert(player.getDuration());
       } else if (event.data == YT.PlayerState.ENDED) {
-        location.href = "index.php";
+        location.href = "leaf.php";
 
       }
     }

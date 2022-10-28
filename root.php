@@ -103,7 +103,8 @@ $temp =  $row["temp"];
       }
 function updateStatus(status_val) {
         //status_val = JSON.stringify({a: status_val, b: username});
-            var username = readCookie("username");
+          //  var username = readCookie("username");
+                var username = '<?php echo $user_name  ?>';
          console.log(status_val);
     $.ajax({
         type: "POST",
@@ -128,11 +129,12 @@ function updateStatus(status_val) {
         success: function (result) {
         }
     });
-   // location.href = "admin.php"; 
+   // location.href = "root.php"; 
 }*/
 function updatetemp(status_val) {
     //"a5BsZ1MrhXc";
-    var username = readCookie("username");
+    //var username = readCookie("username");
+    var username = '<?php echo $user_name  ?>';
     $.ajax({
         type: "POST",
         url: "backend.php",
@@ -161,7 +163,7 @@ function nextplay() {
 function redirect()
 {
   setInterval(() => {
-    location.href = "admin.php"; 
+    location.href = "root.php"; 
   }, 500);
 }
 let s = '';
@@ -194,7 +196,7 @@ function timeline()
 setInterval(() => {
   timeline();
 }, 2000);
-function readCookie(name) {
+/*function readCookie(name) {
     //credit https://stackoverflow.com/q/5639346
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -234,16 +236,16 @@ else
           //alert(temp);
         }
       });
-    }
+    }*/
     </script>
 </head>
-<body onload="username();">
+<body><!-- onload="username();">
     <div id="remdiv">
         <label>USERNAME
         <input type="text" id="username">
         </label>
         <button onclick="username();">CHECK</button>
-    </div>
+    </div>-->
     <div class="player">
     <div id="player" class="internal-player-image"></div>
             <div class="internal-timeline" id = "internal-timeline">----------------------------------------</div>
