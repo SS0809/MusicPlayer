@@ -7,14 +7,11 @@ if (empty($_SESSION['username'])) {
     header("Location:root.html");
 }
  include "database.php";
-    $conn = mysqli_connect($servername,
-        $username, $password, $database);
     $user_name  = $_SESSION['username'] ;
-    if($conn) {
+    if($connect) {
         $sql= "SELECT * FROM player WHERE username = '$user_name';";
-      $result = mysqli_query($conn, $sql); 
-        $num = mysqli_num_rows($result);
-   while($row = mysqli_fetch_assoc($result)) {
+     $result = pg_query($connect, $sql);
+   while($row = pg_fetch_assoc($result)) {
 $temp =  $row["temp"];
   }
     }

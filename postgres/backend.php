@@ -1,7 +1,7 @@
 <?php
  session_start();
- include "databasep.php";
-        //$S =  $_SESSION['username'] ;
+ include "database.php";
+        $S =  $_SESSION['username'] ;
         $query  = "
 SELECT * FROM player where username = 'saurabhss';
  ";
@@ -9,8 +9,8 @@ $result = pg_query($connect, $query);
 
 
 while ($row = pg_fetch_row($result)) {
-  echo " $row[1]$row[2]$row[3]$row[4] ";
-  echo "<br />\n";
+ // echo " $row[1]$row[2]$row[3]$row[4] ";
+  //echo "<br />\n";
 }
 
 
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $status = $_POST['status'];
            $username = $_POST['timeline'];
             $sql = "UPDATE `player` SET `timeline` = '$status' WHERE `username` = '$username' LIMIT 1;";
-            $result = $conn->query($sql);
+     $result = pg_query($connect, $sql);
         echo $result;
     }
     else if (isset($_POST['play_update'])) {
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $status = $_POST['statuss'];
            $username = $_POST['temp_update'];
             $sql = "UPDATE `player` SET `temp` = '$status' WHERE `username` = '$username' LIMIT 1;";
-            $result = $conn->query($sql);
+     $result = pg_query($connect, $sql);
     echo json_encode($_POST);
 }
 }
@@ -40,18 +40,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 if($_SERVER["REQUEST_METHOD"] == "GET")  {
      $sql = "SELECT temp from player where username = '$S';";
-$result = $conn->query($sql);
-while($row = $result->fetch_assoc()) {
+     $result = pg_query($connect, $sql);
+while ($row = pg_fetch_row($result)) {
     echo $row[5];
    }
   }
  if($_SERVER["REQUEST_METHOD"] == "POST")  {
     $sql = "SELECT * from player where username = '$S';";
-$result = $connect->query($sql);
-if ($result->num_rows > 0) {
-while($row = $result->fetch_assoc()) {
+     $result = pg_query($connect, $sql);
+while ($row = pg_fetch_row($result)) {
     $arr = array('a' => $row[5], 'b' => $row[1]);
     echo json_encode($arr);
-   }}}
-   
+   }
+} 
  ?>

@@ -8,16 +8,18 @@ if (empty($_SESSION['username'])) {
 }
  include "database.php";
    $user_name = $_SESSION['username'];
- $conn = mysqli_connect($servername,
-        $username, $password, $database);
-    if($conn) {
-        $sql= "SELECT * FROM player WHERE username = '$user_name';";
-      $result = mysqli_query($conn, $sql); 
-        $num = mysqli_num_rows($result);
-   while($row = mysqli_fetch_assoc($result)) {
-$timeline =  $row["timeline"];
-$temp =  $row["temp"];
-  }
+    if($connect) {
+        $sql= "SELECT * FROM player WHERE username = 'saurabhss';";
+     $result = pg_query($connect, $sql);
+
+ $temp  ;
+$timeline  ;
+while ($row = pg_fetch_row($result)) {
+  //echo " $row[1]$row[2]$row[3]$row[4] ";
+  //echo "<br />\n";
+ $temp = $row[5] ;
+$timeline = $row[1] ;
+}
     }
     else {
         die("Error". mysqli_connect_error());
