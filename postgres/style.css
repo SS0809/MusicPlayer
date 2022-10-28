@@ -1,0 +1,88 @@
+body {
+    background-color: black;
+    font-family: cursive;
+    color: white;
+    padding: 1%;
+}
+.h11{
+        margin: 1%;
+        padding: 1%;        
+}
+.player {
+    padding: 20px 20px;
+    margin: 1%;
+    background-color: transparent;
+    border-radius: 16px;
+}
+
+.ytplayer {
+    padding: 10px;
+}
+.internal-player-image {
+    height: 250px;
+    width: 280px;
+    margin: 1%;
+    border-radius: 8px;
+    background-color: green;
+}
+
+.internal-timeline {
+    margin: 5%;
+      font-family: serif;
+}
+
+.internal-name {
+    margin: 3%;
+}
+
+.internal-player-play {
+    border-radius: 8px;
+    height: 30px;
+    width: 30px;
+    margin: 5%;
+    z-index: 123;
+    background-color: white;
+}
+
+.internal-player-pause {
+    border-radius: 8px;
+    height: 30px;
+    width: 30px;
+    margin: 5%;
+    z-index: 123;
+    background-color: black;
+}
+
+.internal-player-main {
+    border-radius: 8px;
+    height: 50px;
+    width: 50px;
+    margin: 5%;
+    float: left;
+    opacity: 0.8;
+    background-color: green;
+}
+
+.internal-player-left {
+    border-radius: 8px;
+    height: 50px;
+    width: 50px;
+    margin: 5%;
+    float: left;
+    opacity: 0.4;
+    background-color: white;
+}
+
+.internal-player-right {
+    border-radius: 8px;
+    height: 50px;
+    width: 50px;
+    margin: 5%;
+    float: right;
+    opacity: 0.4;
+    background-color: white;
+}
+
+.hide {
+    padding-bottom: 65%;
+}
