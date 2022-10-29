@@ -132,7 +132,7 @@ var  vid = playlistarr[<?php echo $temp;?>] , temp = '<?php echo $temp;?>' , too
         url: "backend.php",
         //data: {timeline_update: true, status: "saurabhss"},
         success: function (data) {
-         // alert(data);
+         console.log(data);
           data = JSON.parse(data);
                if (vid != playlistarr[data.a] ) {
                 vid = playlistarr[data.a];

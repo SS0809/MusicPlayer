@@ -78,7 +78,7 @@ $temp =  $row["temp"];
         }
         else if(event.data == YT.PlayerState.ENDED)
         {
-
+    
               updatetemp(temp);
               //updateplay();
         }
@@ -87,7 +87,7 @@ $temp =  $row["temp"];
                 if (value%2!=0) {
                  //console.log("hi");
                  document.getElementById('internal-player-right').style.background="green";
-               updateStatus(player.getCurrentTime()+0.463);    
+               updateStatus(player.getCurrentTime()+0.32);    
                //updateplay();    
                  setTimeout(recursionn, 100);
              }

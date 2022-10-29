@@ -16,7 +16,7 @@ $sql = "INSERT INTO `player`(`username`, `playlist`) VALUES ('$user','$playlist'
   <link rel="stylesheet" href="style.css">
  </head>
 <body>
-  <h1>LEAF</h1>
+  <h1>REGISTER</h1>
   <form id="myForm" action="register.php" method="post">
     <label>type the root name
     <input id="user" name="user">
