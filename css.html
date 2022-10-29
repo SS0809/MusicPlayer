@@ -5,13 +5,44 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 	<style type="text/css">
-	body{
-		background: linear-gradient(135deg,            #cc2b5e , #753a88);
+	/*body{
+		background: linear-gradient(90deg,#cc2b5e 0% , #753a88 100% );
 	}	
+*/
+
 	</style>
+      <link rel="stylesheet" type="text/css" href="style2.css">
 </head>
 <body>
-  <h1>color</h1>
+<h1 class="h11">color</h1>
+<div class="grid-player">
+    <div class="grid-player-child">
+     <div id="player" class="internal-player-image"></div>
+     <div class="internal-timeline" id="internal-timeline">------------------------------------------</div>
+     <div class="internal-name">
+      <h3 class="title" id="title">you are listenning the music</h3>
+     </div>
+    </div>
+</div>
+<div class="grid-container">
+  <div class="grid-child">
+    <button class="internal-player-main" id="internal-player-main" onclick="change();">
+      <div class="internal-player-play" id="play">
+      </div>
+    </button>
+  </div>
+  <div class="grid-child">
+    <button class="internal-player-right" id="internal-player-right" onclick="even();">SYNC</button>
+   </div>
+   <div class="grid-child">
+    <button class="internal-player-right" id="internal-player-right" onclick="even();"><<10</button>
+   </div>
+   <div class="grid-child">
+    <button class="internal-player-right" id="internal-player-right" onclick="even();">10>></button>
+   </div>
+</div>
+  <div class="hide"></div>
+  <script type="text/javascript">
        /*
        		background: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgba(155,81,224) 50%);
               #000428 , #004e92
@@ -20,6 +51,7 @@
               #c33764 , #1d2671
               #42275a , #734b6d
               #cc2b5e , #753a88
-             */
+       */
+   </script>
 </body>
 </html>

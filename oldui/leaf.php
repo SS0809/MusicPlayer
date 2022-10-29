@@ -35,28 +35,26 @@ $temp =  $row["temp"];
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<body>
-<div class="grid-player">
-    <div class="grid-player-child">
-     <div id="player" class="internal-player-image"></div>
-     <div class="internal-timeline" id="internal-timeline">------------------------------------------</div>
-     <div class="internal-name">
+<body><!-- onload="bgchange();"-->
+  <div class="player">
+    <div id="player" class="internal-player-image"></div>
+    <div class="internal-timeline" id="internal-timeline">------------------------------------------</div>
+    <div class="internal-name">
       <h3 class="title" id="title">you are listenning the music</h3>
-     </div>
+
     </div>
-</div>
-<div class="grid-container">
-  <div class="grid-child">
+    <!-- <button class="internal-player-left">
+        </button>-->
     <button class="internal-player-main" id="internal-player-main" onclick="change();">
       <div class="internal-player-play" id="play">
       </div>
     </button>
-  </div>
-  <div class="grid-child">
     <button class="internal-player-right" id="internal-player-right" onclick="even();">SYNC</button>
-   </div>
-</div></div>
+  </div>
+  </div>
+  likes: <div id="like"></div>
   <div class="hide"></div>
+
   <script src="script.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script>
