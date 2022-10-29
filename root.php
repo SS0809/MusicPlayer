@@ -58,7 +58,7 @@ $temp =  $row["temp"];
         });
       }
       function onPlayerReady(event) {
-        setPlaybackRate(small);
+      player.setPlaybackRate("small");
         event.target.playVideo();//play video
                   player.setLoop(true);          
       }

@@ -14,11 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $result = $conn->query($sql);
         echo $result;
     }
-    else if (isset($_POST['play_update'])) {
-      $update = $db->prepare("UPDATE `player` SET `ytcode` = ? WHERE `username` = '$S' LIMIT 1;");
-      $update->execute([$_POST['status']]);
-      echo json_encode($_POST);
-  }
   else if (isset($_POST['temp_update'])) {
         $status = $_POST['statuss'];
            $username = $_POST['temp_update'];

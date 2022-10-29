@@ -21,14 +21,6 @@
       "#421e8a", "#541e8a", "#661e8a", "#781e8a", "#8a1e8a", "#8a1e78", "#8a1e66",
       "#8a1e54", "#8a1e42", "#8a1e30", "#8a1e1e"
     ];
-             /*
-              #000428 → #004e92
-              #4568dc → #b06ab3
-              #3a1c71 → #d76d77 → #ffaf7b
-              #c33764 → #1d2671
-              #42275a → #734b6d
-              #cc2b5e → #753a88
-             */
     var i = 0,
       j = 36;
     setInterval(function () {
@@ -60,7 +52,7 @@ function titlechange() {
   const aa22 = JSON.parse(httpGet(vidlink2));
   var s2 = aa2.items[0].snippet.title;
   var s3 = aa22.items[0].statistics.likeCount;
-  console.log(vid);
+  //console.log(vid);
   document.getElementById("title").innerHTML = s2;
   document.getElementById("like").innerHTML = s3;
 }
@@ -69,7 +61,7 @@ function titlechange2(data) {
   var vidlink = 'https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + data + '&key=AIzaSyAekxE11gZ3vPmLD87H7EclGNT44BqkDVE';
   const aa2 = JSON.parse(httpGet(vidlink));
   var s2 = aa2.items[0].snippet.title;
-  console.log(vid);
+  //console.log(vid);
   document.getElementById("title").innerHTML = s2;
 }
   function disableScroll() {
@@ -92,5 +84,5 @@ var playlistarr = [];
   for(var i = 0 ,s2;i<maxResults;i++){
    s2 = aaa2.items[i].snippet.resourceId.videoId;
   playlistarr.push(s2);
-  console.log(s2);
+  //console.log(s2);
 }
