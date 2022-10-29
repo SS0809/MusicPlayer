@@ -92,6 +92,18 @@ $temp =  $row["temp"];
                  setTimeout(recursionn, 100);
              }
       }
+      function tr10()
+      {
+             updateStatus(player.getCurrentTime()+0.32-10);  
+             player.seekTo(player.getCurrentTime()+0.32-10, true);
+             player.playVideo(); 
+      }
+      function tf10()
+      {
+             updateStatus(player.getCurrentTime()+0.32+10);  
+             player.seekTo(player.getCurrentTime()+0.32+10, true);
+             player.playVideo(); 
+      }
            function even()
       {
             value++;
@@ -158,37 +170,28 @@ function timeline()
   too = player.getCurrentTime()/player.getDuration();
   too = too * 100 ;
   too = parseInt(too, 10); 
-   //console.log(too); 
-      let ss = '' ,  bo = false;;
-   for(var i = 0 ;i<40;i++)
-   {
-    if(i*3 == too)
-    {
-      ss += '*+*';
-      bo = true;
-    }
-    else
-    {
-      ss += '-';
-    }
-   }
-   if (bo) {
-    s=ss;
-   }
-   //console.log(s);
-     bo = false;
-   document.getElementById("internal-timeline").innerHTML = s;
+      document.getElementById("timeline").value = too;
 }
 setInterval(() => {
   timeline();
 }, 2000);
-    </script>
+       document.getElementById('volume').value = player.getVolume();
+      function chng(){
+       var volume = document.getElementById('volume').value;
+       player.setVolume(volume);
+       alert(volume);
+       //var brightness = document.getElementById('brightness').value;
+       //var timeline = document.getElementById('timeline').value;       
+     }
+     </script>
 </head>
 <body>
     <div class="grid-player">
     <div class="grid-player-child">
      <div id="player" class="internal-player-image"></div>
-     <div class="internal-timeline" id="internal-timeline">------------------------------------------</div>
+     <div class="internal-timeline" id="internal-timeline">
+           <input type="range" value="100" min="0" max="100" id="timeline" style="width:100%;"disabled>
+     </div>
      <div class="internal-name">
       <h3 class="title" id="title">you are listenning the music</h3>
      </div>
@@ -202,16 +205,30 @@ setInterval(() => {
     </button>
   </div>
   <div class="grid-child">
-    <button class="internal-player-right" id="internal-player-right" onclick="even();">SYNC</button>
+    <button class="internal-player-right" id="internal-player-right" onclick="even();" style="background-color:#e8e872;">SYNC</button>
    </div>
    <div class="grid-child">
-       <button class="internal-player-right" onclick="resetplay();">RESET
+       <button class="internal-player-right" onclick="resetplay();" style="background-color:#f70a4d;">RESET
         </button>
    </div>
    <div class="grid-child">
     <button class="internal-player-right" id="internal-player-right2" onclick="nextplay();">NEXT</button>
    </div>
+    <div class="grid-child">
+       <button class="internal-player-right" onclick="tr10();"><<10
+        </button>
+   </div>
+   <div class="grid-child">
+    <button class="internal-player-right" id="internal-player-right2" onclick="tf10();">10>></button>
+   </div>
 </div>
+      <label>VOLUME<br>
+      <input type="range" value="100" min="0" max="100" id="volume" onclick="chng();">
+      </label>
+      <br>
+      <label>BRIGTHNESS<br>
+      <input type="range" value="100" min="0" max="100" id="brightness">
+      </label>
   <div class="hide"></div>
   <script type="text/javascript">
     function list(textnode){

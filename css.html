@@ -18,7 +18,18 @@
 <div class="grid-player">
     <div class="grid-player-child">
      <div id="player" class="internal-player-image"></div>
-     <div class="internal-timeline" id="internal-timeline">------------------------------------------</div>
+     <div class="internal-timeline" id="internal-timeline"><!------------------------------------------>
+      <input type="range" value="100" min="0" max="100" id="timeline">
+      <input type="range" value="100" min="0" max="100" id="volume" style="-webkit-appearance: slider-vertical" onclick="chng();">
+      <input type="range" value="100" min="0" max="100" id="brightness" style="-webkit-appearance: slider-vertical">
+     </div>
+     <script type="text/javascript">
+      function chng(){
+       var volume = document.getElementById('volume').value;
+       var brightness = document.getElementById('brightness').value;
+       var timeline = document.getElementById('timeline').value;       
+     }
+     </script>
      <div class="internal-name">
       <h3 class="title" id="title">you are listenning the music</h3>
      </div>

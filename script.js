@@ -12,7 +12,6 @@
     }
     // console.log(a);
   }
-
   function bgchange() {
     const arr = ["#8a1e1e", "#8a301e", "#8a421e", "#8a541e", "#8a661e", "#8a781e",
       "#8a8a1e", "#064d4b", "#788a1e", "#668a1e", "#548a1e", "#428a1e", "#308a1e",

@@ -157,9 +157,12 @@ var  vid = playlistarr[<?php echo $temp;?>] , temp = '<?php echo $temp;?>' , too
 
         document.getElementById('internal-player-right').style.background = "green";
         getstatus();
-        //document.getElementById('internal-player-right').style.background = "#656565";
+        setInterval(wait, 500);
     }
-
+    function wait()
+    {
+        document.getElementById('internal-player-right').style.background = "#656565";
+    }
     function stopVideo() {
       player.stopVideo();
     }

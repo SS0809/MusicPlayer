@@ -7,22 +7,22 @@
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 29px;
+    grid-gap: 15px;
     border-color: white;
     height: 80%;
     width: 80%;
-    margin-top: 10%;
+    margin-top: 1%;
 }
 .grid-player {
     display: grid;
     grid-template-columns: 1fr;
-    margin: 2%;
+    margin: 1%;
     background-color: transparent;
     border-radius: 16px;
     padding: 20px 20px;
 }
 .h11{
-        margin: 5%;
+        margin: 4%;
 }
 .internal-player-image {
     height: 250px;
@@ -32,7 +32,7 @@
 }
 
 .internal-timeline {
-    margin: 10%;
+    margin: 5%;
       font-family: serif;
 }
 
@@ -73,8 +73,8 @@
     width: 50px;
     margin-right: 50%;
     margin-left: 50%;
-    opacity: 0.4;
-    background-color: white;
+    opacity: 0.7;
+    background-color: #656565;
 }
 
 .hide {
