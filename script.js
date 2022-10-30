@@ -85,3 +85,9 @@ var playlistarr = [];
   playlistarr.push(s2);
   //console.log(s2);
 }
+
+
+function bri(){
+   console.log( 0.01 * document.getElementById("brightness").value); 
+ document.getElementById("preloadr").style.opacity = 1-(0.01 * document.getElementById("brightness").value);
+   }
