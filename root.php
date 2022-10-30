@@ -228,7 +228,7 @@ setInterval(() => {
       </label>
       <br>
       <label>BRIGTHNESS<br>
-      <input type="range" value="100" min="0" max="100" style="width:100%;" id="brightness" onchange="bri();">
+      <input type="range" value="100" min="20" max="100" style="width:100%;" id="brightness" onchange="bri();">
       </label>
 </div>
   <div class="hide"></div>
