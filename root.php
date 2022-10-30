@@ -176,10 +176,11 @@ setInterval(() => {
   timeline();
 }, 2000);
        document.getElementById('volume').value = player.getVolume();
-      function chng(){
-       var volume = document.getElementById('volume').value;
+       
+function chng(){
+       var volume =   document.getElementById('volume').value;
+       //console.log(volume);
        player.setVolume(volume);
-       //alert(volume);
      }
      </script>
 </head>
@@ -222,7 +223,7 @@ setInterval(() => {
 </div>
 <div class ="range">
       <label>VOLUME<br>
-      <input type="range" value="100" min="0" max="100" id="volume" style="width:100%;" onclick="chng();">
+      <input type="range" value="100" min="0" max="100" id="volume" style="width:100%;" onchange="chng();">
       </label>
       <br>
       <label>BRIGTHNESS<br>
