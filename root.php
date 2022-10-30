@@ -33,7 +33,7 @@ $temp =  $row["temp"];
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
     <script src="script.js"></script>
         <script>
-            document.body.style.background = "linear-gradient(135deg,rgba(155,81,224) 30%,rgba(6,147,227,1) 100%)";
+            document.body.style.background = "linear-gradient(135deg,rgba(155,81,224) 40%,rgba(6,147,227,1) 100%)";
             var  temp = '<?php echo $temp;  ?>';
             var vector = [] , vid = playlistarr[temp]   , too = 0 ;
       var tag = document.createElement('script');
@@ -179,9 +179,7 @@ setInterval(() => {
       function chng(){
        var volume = document.getElementById('volume').value;
        player.setVolume(volume);
-       alert(volume);
-       //var brightness = document.getElementById('brightness').value;
-       //var timeline = document.getElementById('timeline').value;       
+       //alert(volume);
      }
      </script>
 </head>
