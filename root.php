@@ -222,13 +222,15 @@ setInterval(() => {
     <button class="internal-player-right" id="internal-player-right2" onclick="tf10();">10>></button>
    </div>
 </div>
+<div class ="range">
       <label>VOLUME<br>
-      <input type="range" value="100" min="0" max="100" id="volume" onclick="chng();">
+      <input type="range" value="100" min="0" max="100" id="volume" style="width:100%;" onclick="chng();">
       </label>
       <br>
       <label>BRIGTHNESS<br>
-      <input type="range" value="100" min="0" max="100" id="brightness">
+      <input type="range" value="100" min="0" max="100" style="width:100%;" id="brightness" onchange="bri();">
       </label>
+</div>
   <div class="hide"></div>
   <script type="text/javascript">
     function list(textnode){
@@ -239,7 +241,9 @@ setInterval(() => {
   document.body.insertBefore(newDiv, currentDiv);
   }
   titlechange();
- 
   </script>
+</head>
+<body>
+<div class='preloadr' id='preloadr'></div>
   </body>
 </html>
