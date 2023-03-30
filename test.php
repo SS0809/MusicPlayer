@@ -4,13 +4,13 @@
 
 	$password = "your_mysql_root_password";
 
-	
+	$port=3306;
 
 	// Create a connection
 
 	$conn = mysqli_connect($servername,
 
-		$username, $password);
+		$username, $password,$port);
 
 	// Code written below is a step taken
 
