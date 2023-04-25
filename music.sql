@@ -74,3 +74,16 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*
+
+
+
+CREATE TABLE IF NOT EXISTS public.players
+(
+    id integer NOT NULL DEFAULT nextval('players_id_seq'::regclass),
+    timeline character varying(255) COLLATE pg_catalog."default",
+    username character varying(255) COLLATE pg_catalog."default",
+    playlist character varying(255) COLLATE pg_catalog."default",
+    temp character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT players_pkey PRIMARY KEY (id)
+)

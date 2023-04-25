@@ -7,20 +7,13 @@ if (empty($_SESSION['username'])) {
     header("Location:root.html");
 }
  include "database.php";
-    $conn = mysqli_connect($servername,
-        $username, $password, $database);
     $user_name  = $_SESSION['username'] ;
-    if($conn) {
-        $sql= "SELECT * FROM player WHERE username = '$user_name';";
-      $result = mysqli_query($conn, $sql); 
-        $num = mysqli_num_rows($result);
-   while($row = mysqli_fetch_assoc($result)) {
+ $connection = pg_connect("host=$servername dbname=$database user=$username password=$password");
+    $result = pg_query( $connection, "SELECT * FROM players WHERE username = '$user_name';" );
+    $num = pg_num_rows($result);
+   while($row = pg_fetch_assoc($result)) {
 $temp =  $row["temp"];
   }
-    }
-    else {
-        die("Error". mysqli_connect_error());
-}
 ?>
     <!DOCTYPE html>
 <html>

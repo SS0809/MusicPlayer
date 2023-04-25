@@ -5,16 +5,19 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    restart: always
     volumes:
       - /:/var/www/html
-    environment:
-      MYSQL_DB_CONNECTION: test
-      MYSQL_DB_NAME: test
-      MYSQL_USER: test
-      MYSQL_PASSWORD: test
+    depends_on:
+      - db
     networks:
       - test
-
-networks:
-  test:
-    external: true
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 0111cs211163
+      POSTGRES_DB: projectsdb   
+      POSTGRES_USERNAME: postgres
+    ports:
+      - "5433:5432"
