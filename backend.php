@@ -2,23 +2,23 @@
  session_start();
  include "database.php";
         $S =  $_SESSION['username'] ;
-    $conn = mysqli_connect($servername,
-        $username, $password, $database);
-        $dsn = 'mysql:dbname='.$database.';host='.$servername.'';
-$db = new PDO($dsn, $username, $password);
+   $connection = pg_connect("host=$servername dbname=$database user=$username password=$password")
+        or die("🚫 Unable to Connect to '$host'.\n\n");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['status'])) {
         $status = $_POST['status'];
            $username = $_POST['timeline'];
-            $sql = "UPDATE `player` SET `timeline` = '$status' WHERE `username` = '$username' LIMIT 1;";
-            $result = $conn->query($sql);
+           $result = pg_query(
+        $connection,
+             "UPDATE players SET  timeline='$status'    WHERE username = 'saurabhss' ;");
         echo $result;
     }
   else if (isset($_POST['temp_update'])) {
         $status = $_POST['statuss'];
            $username = $_POST['temp_update'];
-            $sql = "UPDATE `player` SET `temp` = '$status' WHERE `username` = '$username' LIMIT 1;";
-            $result = $conn->query($sql);
+           $result = pg_query(
+        $connection,
+       "UPDATE players SET  temp='$status'    WHERE username = 'saurabhss' ;");
     echo json_encode($_POST);
 }
 }
@@ -26,17 +26,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //echo json_encode(array());
 }
 if($_SERVER["REQUEST_METHOD"] == "GET")  {
-     $sql = "SELECT temp from player where username = '$S';";
-$result = $conn->query($sql);
-while($row = $result->fetch_assoc()) {
-    echo $row["temp"];
-   }
+$result = pg_query(
+        $connection,
+        "SELECT temp from player where username = '$S';");
+        $num = pg_num_rows($result);
+   while($row = pg_fetch_assoc($result)) {
+$timeline =  $row["timeline"];
+$temp =  $row["temp"];
   }
  if($_SERVER["REQUEST_METHOD"] == "POST")  {
-    $sql = "SELECT * from player where username = '$S';";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-while($row = $result->fetch_assoc()) {
+$result = pg_query(
+        $connection,
+        "SELECT * FROM player WHERE username = '$S';");
+        $num = pg_num_rows($result);
+   while($row = pg_fetch_assoc($result)) {
     $arr = array('a' => $row["temp"], 'b' => $row["timeline"]);
     echo json_encode($arr);
    }}}

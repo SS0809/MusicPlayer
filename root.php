@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "preload.php";
 if($_SERVER["REQUEST_METHOD"] == "POST") {
   $_SESSION['username'] =  $_POST["user"];
 }
