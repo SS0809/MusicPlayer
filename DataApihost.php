@@ -1,3 +1,3 @@
 <?php
-    $servername = "https://dataapi-g9t8.onrender.com";
+    $servername = "https://dataapi-dhbg.onrender.com";
 ?>

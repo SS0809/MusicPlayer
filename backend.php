@@ -1,47 +1,82 @@
 <?php
  session_start();
- include "database.php";
+  include "DataApihost.php";
         $S =  $_SESSION['username'] ;
-   $connection = pg_connect("host=$servername dbname=$database user=$username password=$password")
-        or die("🚫 Unable to Connect to '$host'.\n\n");
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {//working
     if (isset($_POST['status'])) {
         $status = $_POST['status'];
            $username = $_POST['timeline'];
-           $result = pg_query(
-        $connection,
-             "UPDATE players SET  timeline='$status'    WHERE username = 'saurabhss' ;");
-        echo $result;
+$data = array('id' => '1','timeline' => $status);
+$json = json_encode($data);
+$url = $servername.'/api/projects/timeline';
+$ch = curl_init($url);
+ 
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($json)
+));
+ 
+$response = curl_exec($ch);
+if(curl_errno($ch)) {
+    echo 'Error: ' . curl_error($ch);
+} else {
+    echo $response;
+ }
+curl_close($ch);
     }
-  else if (isset($_POST['temp_update'])) {
+  else if (isset($_POST['temp_update'])) {//working
         $status = $_POST['statuss'];
            $username = $_POST['temp_update'];
-           $result = pg_query(
-        $connection,
-       "UPDATE players SET  temp='$status'    WHERE username = 'saurabhss' ;");
-    echo json_encode($_POST);
+           // $sql = "UPDATE `player` SET `temp` = '$status' WHERE `username` = '$username' LIMIT 1;";//tobe removed
+            // $conn->query($sql);
+$data = array('id' => '1','temp' => $status);
+$json = json_encode($data);
+$url = $servername.'/api/projects/temp';
+$ch = curl_init($url);
+ 
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($json)
+));
+ 
+$response = curl_exec($ch);
+if(curl_errno($ch)) {
+    echo 'Error: ' . curl_error($ch);
+} else {
+    echo $response;
+ }
+curl_close($ch);
 }
 }
  else {
     //echo json_encode(array());
 }
-if($_SERVER["REQUEST_METHOD"] == "GET")  {
-$result = pg_query(
-        $connection,
-        "SELECT temp from player where username = '$S';");
-        $num = pg_num_rows($result);
-   while($row = pg_fetch_assoc($result)) {
-$timeline =  $row["timeline"];
-$temp =  $row["temp"];
+if($_SERVER["REQUEST_METHOD"] == "GET")  {//working
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $servername.'/api/projects/');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$response = curl_exec($ch);
+echo $response;
   }
- if($_SERVER["REQUEST_METHOD"] == "POST")  {
-$result = pg_query(
-        $connection,
-        "SELECT * FROM player WHERE username = '$S';");
-        $num = pg_num_rows($result);
-   while($row = pg_fetch_assoc($result)) {
-    $arr = array('a' => $row["temp"], 'b' => $row["timeline"]);
+ /*if($_SERVER["REQUEST_METHOD"] == "POST")  {//error
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'http://localhost:8090/api/projects/ok');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'id: 1',
+    'Content-Length: ' . strlen($json)
+));
+$response = curl_exec($ch);
+$json = json_decode($response, true);
+$arr = array('temp' => $json["temp"], 'timeline' => $json["timeline"]);
     echo json_encode($arr);
-   }}}
-   
+   }
+   */
  ?>

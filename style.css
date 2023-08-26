@@ -96,21 +96,3 @@ body {
 .hide {
     padding-bottom: 65%;
 }
-.container{
-    display: flex;
-}
-.fixed{
-    width: 50%;
-}
-.flex-item{
-    flex-grow: 1;
-}
-.texter{
-    align-content: center;
-         margin: 20%;
-         margin-bottom: 40%;
-         margin-top: 40%;
-}
-.HEAD{
-    color: #7434eb;
-}
