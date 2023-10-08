@@ -1,4 +1,4 @@
-# Musicplayer
+# PlayMe
 
 ## TODO 
  create a logo for frontend -> (whole frontend)
