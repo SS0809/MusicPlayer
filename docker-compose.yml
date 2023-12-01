@@ -1,20 +1,28 @@
-version: "2"
+version: '3'
 services:
-  webserver:
-    image: php:latest 
-    ports:
-      - "80:80"
-      - "443:443"
+  musicplayer:
+    container_name: php-apache
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    depends_on:
+      - db
     volumes:
-      - /:/var/www/html
+      - ./app:/var/www/html/
+    ports:
+      - 8000:80
+  db:
+    image: mysql:5.7
+    container_name: db
     environment:
-      MYSQL_DB_CONNECTION: test
-      MYSQL_DB_NAME: test
-      MYSQL_USER: test
-      MYSQL_PASSWORD: test
-    networks:
-      - test
-
-networks:
-  test:
-    external: true
+      MYSQL_ROOT_PASSWORD: ROOT_PASSWORD
+      MYSQL_DATABASE: php-app
+      MYSQL_USER: USER
+      MYSQL_PASSWORD: PASS
+      MYSQL_AUTHENTICATION_PLUGIN: caching_sha2_password
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  adminer:
+    image: adminer
+    ports:
+      - 8001:8080

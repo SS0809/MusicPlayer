@@ -1,27 +1,26 @@
 <?php
 session_start();
-include "preload.php";
+  include "DataApihost.php";
 if($_SERVER["REQUEST_METHOD"] == "POST") {
   $_SESSION['username'] =  $_POST["user"];
 }
 if (empty($_SESSION['username'])) {
     header("Location:root.html");
 }
- include "database.php";
-    $conn = mysqli_connect($servername,
-        $username, $password, $database);
     $user_name  = $_SESSION['username'] ;
-    if($conn) {
-        $sql= "SELECT * FROM player WHERE username = '$user_name';";
-      $result = mysqli_query($conn, $sql); 
-        $num = mysqli_num_rows($result);
-   while($row = mysqli_fetch_assoc($result)) {
-$temp =  $row["temp"];
-  }
-    }
-    else {
-        die("Error". mysqli_connect_error());
-}
+$ch = curl_init();
+$url = $servername.'/api/projects/ok';
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'id: 1',
+    'Content-Length: ' . strlen($json)
+));
+$response = curl_exec($ch);
+$json = json_decode($response, true);
+$temp = $json['temp'];
+$timeline = $json['timeline'];
 ?>
     <!DOCTYPE html>
 <html>
@@ -163,7 +162,7 @@ function redirect()
 {
   setInterval(() => {
     location.href = "root.php"; 
-  }, 500);
+  }, 1500);
 }
 let s = '';
 function timeline()
