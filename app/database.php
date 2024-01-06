@@ -1,6 +1,6 @@
 <?php
-    $servername = 'db';
-    $username = "USER";
-    $password = "PASS";
-    $database = "php-app";
+    $servername = 'localhost';
+    $username = "saurabh";
+    $password = "0111cs211163";
+    $database = "music";
 ?>
